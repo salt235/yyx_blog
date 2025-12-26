@@ -4,7 +4,7 @@ externalLinkIcon: false
 config:
   -
     type: banner
-    banner: https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/da2f73c4c1e9b7f9ba63d3d7bc475c6c_720.png
+    banner: /bg.png
     
     bannerMask:
       light: 0.1
