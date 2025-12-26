@@ -20,7 +20,7 @@ import collections from './collections'
 export default defineThemeConfig({
   logo: '/plume1.png', // 站点 Logo，放在 docs/.vuepress/public 下
 
-  appearance: false,  // 配置 深色模式
+  appearance: 'dark',  // 配置 暗/亮模式切换按钮，默认深色
 
   social: [
     { icon: 'github', link: '/' },
@@ -49,11 +49,11 @@ export default defineThemeConfig({
    * @see https://theme-plume.vuejs.press/config/theme/#profile
    */
   profile: {
-    avatar: 'https://theme-plume.vuejs.press/plume.png',
-    name: 'yyx_blog',
-    description: 'my blog',
-    // circle: true,
-    // location: '',
+    avatar: '/plume1.png',  // 头像图片，放在 docs/.vuepress/public 下
+    name: 'yyx235',
+    description: '中长跑爱好者，自律即自由',
+    circle: true,
+    location: '江苏南京',
     // organization: '',
   },
 
@@ -72,10 +72,10 @@ export default defineThemeConfig({
   // },
 
   /* 过渡动画 @see https://theme-plume.vuejs.press/config/theme/#transition */
-  // transition: {
-  //   page: true,        // 启用 页面间跳转过渡动画
-  //   postList: true,    // 启用 博客文章列表过渡动画
-  //   appearance: 'fade',  // 启用 深色模式切换过渡动画, 或配置过渡动画类型
-  // },
+  transition: {
+    page: true,        // 启用 页面间跳转过渡动画
+    postList: true,    // 启用 博客文章列表过渡动画
+    appearance: 'circle-clip',  // 启用 深色模式切换过渡动画, 或配置过渡动画类型
+  },
 
 })
