@@ -55,3 +55,39 @@
   --vp-c-text-3: rgba(235, 235, 245, 0.38);
   */
 }
+
+/* 主页页脚样式 - 让页脚透明融入背景 */
+.footer-no-border .vp-footer {
+  background: transparent !important;
+  border-top: none !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.footer-no-border .vp-footer .container {
+  background: transparent;
+}
+
+.footer-no-border .vp-footer p,
+.footer-no-border .vp-footer a {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.footer-no-border .vp-footer a:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+/* 亮色模式下的页脚文字 */
+[data-theme="light"] .footer-no-border .vp-footer p,
+[data-theme="light"] .footer-no-border .vp-footer a {
+  color: rgba(0, 0, 0, 0.7) !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .footer-no-border .vp-footer a:hover {
+  color: rgba(0, 0, 0, 0.9) !important;
+}
