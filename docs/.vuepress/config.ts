@@ -21,7 +21,8 @@ export default defineUserConfig({
 
   head: [
     // 配置站点图标
-    ['link', { rel: 'icon', type: 'image/png', href: 'https://theme-plume.vuejs.press/favicon-32x32.png' }],
+    // 如果把图标放在 docs/.vuepress/public 下，发布时访问路径为 `/plume.svg`
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/plume.svg' }],
   ],
 
   bundler: viteBundler(),

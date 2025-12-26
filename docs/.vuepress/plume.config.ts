@@ -18,9 +18,9 @@ import collections from './collections'
  * @see https://theme-plume.vuejs.press/config/theme/
  */
 export default defineThemeConfig({
-  logo: 'https://theme-plume.vuejs.press/plume.png',
+  logo: '/plume1.png', // 站点 Logo，放在 docs/.vuepress/public 下
 
-  appearance: true,  // 配置 深色模式
+  appearance: false,  // 配置 深色模式
 
   social: [
     { icon: 'github', link: '/' },
