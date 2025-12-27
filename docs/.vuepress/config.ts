@@ -43,8 +43,10 @@ export default defineUserConfig({
 
     /* 页内信息 */
     // editLink: true,
-    // lastUpdated: true,
-    // contributors: true,
+    lastUpdated: {},// 默认配置
+    contributors: {
+      mode : 'block', // 'inline' | 'block' | false，block可以显示头像
+    },
     // changelog: false,
 
     /**
@@ -180,6 +182,9 @@ export default defineUserConfig({
     // llmstxt: {
     //   locale: '/',    // 默认仅为主语言生成 llms 友好内容
     // }
+
+    /*版权*/
+    copyright: 'CC-BY-4.0'
 
 
   }),
