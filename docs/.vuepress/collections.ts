@@ -102,6 +102,18 @@ const notesVLN = defineCollection({
   },
 })
 
+const youji = defineCollection({
+  type: 'post',
+  dir: 'youji',
+  link: '/youji/',
+  title: '柚记',
+  autoFrontmatter: {
+    title: true,
+    createTime: true,
+    permalink: true,
+  },
+})
+
 /**
  * 导出所有的 collections
  * (blog 为博客示例，如果不需要博客功能，请删除)
@@ -113,4 +125,5 @@ export default defineCollections([
   notesDL,
   notesROS,
   notesVLN,
+  youji,
 ])

@@ -18,12 +18,14 @@ import collections from './collections'
  * @see https://theme-plume.vuejs.press/config/theme/
  */
 export default defineThemeConfig({
+
   logo: '/plume1.png', // 站点 Logo，放在 docs/.vuepress/public 下
 
   appearance: 'dark',  // 配置 暗/亮模式切换按钮，默认深色
 
   social: [
     { icon: 'github', link: 'https://github.com/salt235' },
+    { icon: 'bilibili', link: 'https://space.bilibili.com/506193657' }
   ],
   // navbarSocialInclude: ['github'], // 允许显示在导航栏的 social 社交链接
   // aside: true, // 页内侧边栏， 默认显示在右侧
@@ -77,5 +79,6 @@ export default defineThemeConfig({
     postList: true,    // 启用 博客文章列表过渡动画
     appearance: 'circle-clip',  // 启用 深色模式切换过渡动画, 或配置过渡动画类型
   },
+  
 
 })

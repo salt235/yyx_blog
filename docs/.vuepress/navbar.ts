@@ -18,5 +18,7 @@ export default defineNavbarConfig([
       { text: 'VLN', link: '/notes/VLN/' },
     ],
   },
-  { text: '友链', link: '/friends/' , icon: 'fa-solid:user-friends'},
+  { text: '跑步页面', link: 'run.yyx235.top' , icon: 'simple-icons:runrundotit' },
+  { text: '柚记', link: '/youji/' , icon: 'lineicons:bulb-4'},
+  { text: '友链', link: '/friends/' , icon: 'fa-solid:user-friends'}
 ])

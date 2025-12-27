@@ -56,7 +56,7 @@
   */
 }
 
-/* 主页页脚样式 - 让页脚透明融入背景 */
+/* 主页页脚样式 - 让页脚透明融入背景
 .footer-no-border .vp-footer {
   background: transparent !important;
   border-top: none !important;
@@ -81,7 +81,7 @@
   color: rgba(255, 255, 255, 1) !important;
 }
 
-/* 亮色模式下的页脚文字 */
+/* 亮色模式下的页脚文字 
 [data-theme="light"] .footer-no-border .vp-footer p,
 [data-theme="light"] .footer-no-border .vp-footer a {
   color: rgba(0, 0, 0, 0.7) !important;
@@ -90,4 +90,4 @@
 
 [data-theme="light"] .footer-no-border .vp-footer a:hover {
   color: rgba(0, 0, 0, 0.9) !important;
-}
+} */

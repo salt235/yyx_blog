@@ -6,7 +6,7 @@ list:
   -
     name: L0v3ch4n
     link: https://blog.l0v3ch4n.top/
-    avatar: https://github.com//Cuber-Wei.png
+    avatar: https://q.qlogo.cn/headimg_dl?dst_uin=3134210778&spec=640&img_type=jpg
     desc: 全能王魏祖！
     socials:
       -

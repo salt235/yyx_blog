@@ -2,11 +2,6 @@
  * 查看以下文档了解主题配置
  * - @see https://theme-plume.vuejs.press/config/intro/ 配置说明
  * - @see https://theme-plume.vuejs.press/config/theme/ 主题配置项
- *
- * 请注意，对此文件的修改都会重启 vuepress 服务。
- * 部分配置项的更新没有必要重启 vuepress 服务，建议请在 `.vuepress/config.ts` 文件中配置
- *
- * 特别的，请不要在两个配置文件中重复配置相同的项，当前文件的配置项会被覆盖
  */
 
 import { viteBundler } from '@vuepress/bundler-vite'
@@ -21,8 +16,8 @@ export default defineUserConfig({
 
   head: [
     // 配置站点图标
-    // 如果把图标放在 docs/.vuepress/public 下，发布时访问路径为 `/plume.svg`
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/plume.svg' }],
+    // 如果把图标放在 docs/.vuepress/public 下，发布时访问路径为 `/plume.png`
+    ['link', { rel: 'icon', type: 'image/png', href: '/yuzu.png' }],
     // 引入霞鹜文楷字体 CDN
     ['link', { rel: 'preconnect', href: 'https://cdn.jsdelivr.net', crossorigin: '' }],
     ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css' }],
@@ -189,7 +184,7 @@ export default defineUserConfig({
     // }
 
     /*版权*/
-    copyright: 'CC-BY-4.0'
+    // copyright: 'CC-BY-4.0',
 
 
   }),
