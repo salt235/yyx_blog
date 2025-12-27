@@ -3,7 +3,7 @@ title: java-base
 createTime: 2025/12/27 14:44:18
 permalink: /notes/Java/xisqkup4/
 ---
-[TOC]
+
 
 ## IDEA快捷键
 

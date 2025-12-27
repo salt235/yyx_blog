@@ -5,8 +5,6 @@ permalink: /notes/Java/frgoemdz/
 ---
 # IO流
 
-[TOC]
-
 
 
 ## File

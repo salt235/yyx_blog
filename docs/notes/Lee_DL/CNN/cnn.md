@@ -9,7 +9,6 @@ permalink: /notes/Lee_DL/w09txn4z/
 >
 > 相比 MLP（全连接层），CNN 的参数少很多，提取图像局部特征能力更强。
 
-[TOC]
 
 ## 卷积层（Convolutional Layer）
 
