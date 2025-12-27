@@ -17,5 +17,6 @@ export default defineNavbarConfig([
       { text: 'ROS', link: '/notes/ROS/' },
       { text: 'VLN', link: '/notes/VLN/' },
     ],
-  }
+  },
+  { text: '友链', link: '/friends/' , icon: 'fa-solid:user-friends'},
 ])
