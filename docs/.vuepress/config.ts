@@ -43,7 +43,12 @@ export default defineUserConfig({
 
     /* 页内信息 */
     // editLink: true,
-    lastUpdated: {},// 默认配置
+    lastUpdated: {
+    formatOptions: {
+        dateStyle: 'short',
+        timeStyle: 'short',
+      },
+    },
     contributors: {
       mode : 'block', // 'inline' | 'block' | false，block可以显示头像
     },
