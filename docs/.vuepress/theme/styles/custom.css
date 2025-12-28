@@ -1,5 +1,16 @@
 /* 霞鹜文楷字体已在 config.ts head 中通过 CDN 引入 */
 
+/* 添加博客的网格背景*/
+.vp-doc-container {
+  --vp-doc-blog-bg: rgba(140, 204, 213, 0.10);
+
+  background-image:
+    linear-gradient(90deg, var(--vp-doc-blog-bg) 2%, transparent 0),
+    linear-gradient(1turn, var(--vp-doc-blog-bg) 2%, transparent 0);
+  background-position: 8% 8%;
+  background-size: 30px 30px;
+}
+
 :root {
   --vp-font-family-base: "LXGW WenKai", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
     "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;

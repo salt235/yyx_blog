@@ -51,7 +51,7 @@ export default defineThemeConfig({
    * @see https://theme-plume.vuejs.press/config/theme/#profile
    */
   profile: {
-    avatar: '/plume1.png',  // 头像图片，放在 docs/.vuepress/public 下
+    avatar: 'https://github.com/salt235.png',  // 头像图片
     name: 'yyx235',
     description: '中长跑爱好者，自律即自由',
     circle: true,
