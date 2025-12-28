@@ -12,5 +12,15 @@ list:
       -
         icon: github
         link: https://github.com/Cuber-Wei
+
+  -
+    name: m0feng
+    link: https://www.cnblogs.com/m0feng
+    avatar: https://q.qlogo.cn/headimg_dl?dst_uin=2419843305&spec=640&img_type=jpg
+    desc: 大黄哥，cb的得意门生。
+    socials:
+      -
+        icon: github
+        link: https://github.com/m0feng
 ---
 

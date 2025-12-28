@@ -2,7 +2,7 @@
 title: 何为“柚记”
 createTime: 2025/12/27 21:06:35
 permalink: /youji/8gnin1pl/
-stiky: ture
+sticky: true
 ---
 
 > 柚记，用来记录一些当下的想法。
