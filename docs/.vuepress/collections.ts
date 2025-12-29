@@ -105,13 +105,12 @@ const notesVLN = defineCollection({
 const youji = defineCollection({
   type: 'post',
   dir: 'youji',
-  link: '/youji/',
+  // 列表页避免与 docs/youji/README.md 的 /youji/ 路由冲突
+  link: '/youji/list/',
+  // 文章链接仍保持在 /youji/ 下，避免影响已有 permalink
+  linkPrefix: '/youji/',
   title: '柚记',
-  autoFrontmatter: {
-    title: true,
-    createTime: true,
-    permalink: true,
-  },
+  autoFrontmatter: false
 })
 
 /**
