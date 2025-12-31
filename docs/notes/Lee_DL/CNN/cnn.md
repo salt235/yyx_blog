@@ -1,3 +1,8 @@
+---
+title: cnn
+createTime: 2025/12/27 14:44:18
+permalink: /notes/Lee_DL/528u1pz0/
+---
 # CNN
 
 > CNN（Convolutional Neural Network）是一种 **专门处理图像** 的神经网络。

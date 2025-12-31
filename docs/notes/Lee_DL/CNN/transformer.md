@@ -1,3 +1,8 @@
+---
+title: transformer
+createTime: 2025/12/29 20:20:56
+permalink: /notes/Lee_DL/intus2mn/
+---
 # transformer
 
 >  最早的transformer = encoder + decoder
