@@ -9,18 +9,8 @@ config:
       image: /pomelo.png
   - type: features
     features:
-      - title: 我为什么要跑步?
-        link: ./test.md
-      - title: 我为什么要跑步?
-        link: ./test.md
-      - title: 我为什么要跑步?
-        link: ./test.md
-      - title: 我为什么要跑步?
-        link: ./test.md
-      - title: 我为什么要跑步?
-        link: ./test.md
-      - title: 我为什么要跑步?
-        link: ./test.md
+      - title: 待办
+        link: ./todo.md
 ---
 
 <style>
