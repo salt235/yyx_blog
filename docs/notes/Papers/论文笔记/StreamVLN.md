@@ -1,11 +1,10 @@
 ---
 title: StreamVLN
 createTime: 2026/01/08 12:38:45
-permalink: /notes/Misc/kd1hoq2j/
+permalink: /notes/Papers/kd1hoq2j/
 ---
 # StreamVLN论文结构化精读与分析报告
 
-[TOC]
 
 
 
