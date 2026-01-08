@@ -102,6 +102,19 @@ const notesVLN = defineCollection({
   },
 })
 
+const notesPapers = defineCollection({
+  type: 'doc',
+  dir: 'notes/Papers',
+  linkPrefix: '/notes/Papers',
+  title: '文献阅读',
+  sidebar: 'auto',
+  autoFrontmatter: {
+    title: true,
+    createTime: true,
+    permalink: true,
+  },
+})
+
 const youji = defineCollection({
   type: 'post',
   dir: 'youji',
@@ -124,5 +137,6 @@ export default defineCollections([
   notesDL,
   notesROS,
   notesVLN,
+  notesPapers,
   youji,
 ])
