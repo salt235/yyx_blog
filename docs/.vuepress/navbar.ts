@@ -17,6 +17,7 @@ export default defineNavbarConfig([
       { text: 'ROS', link: '/notes/ROS/' },
       { text: 'VLN', link: '/notes/VLN/' },
       { text: '文献阅读', link: '/notes/Papers/' },
+      { text: '杂项笔记&记录', link: '/notes/Misc/' },
     ],
   },
   { text: '跑步页面', link: 'https://run.yyx235.top/' , icon: 'simple-icons:runrundotit' },
