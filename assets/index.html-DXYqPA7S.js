@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as a}from"./app-DCYTdW2o.js";const r={};function n(o,s){return a(),e("div")}const i=t(r,[["render",n]]),l=JSON.parse('{"path":"/youji/list/","title":"柚记","lang":"zh-CN","frontmatter":{"lang":"zh-CN","title":"柚记","draft":true},"readingTime":{"minutes":0,"words":0},"git":{},"filePathRelative":null,"headers":[],"type":"posts"}');export{i as comp,l as data};
