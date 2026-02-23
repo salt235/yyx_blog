@@ -1,3 +1,8 @@
+---
+title: Bert
+createTime: 2026/01/27 14:25:58
+permalink: /notes/Lee_DL/f2mtbtwb/
+---
 # Bert
 
 > 监督学习和自监督学习：

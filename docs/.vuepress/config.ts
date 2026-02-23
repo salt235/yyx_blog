@@ -173,7 +173,11 @@ export default defineUserConfig({
      * 加密功能
      * @see https://theme-plume.vuejs.press/guide/features/encryption/
      */
-    // encrypt: {},
+    encrypt: {
+      rules: {
+        '/blog/我的2025年度总结': '0235', // 访问 /blog/ 下的页面需要输入密码 1234
+      }
+    }
 
     /**
      * 启用 llmstxt 插件，用于为大语言模型提供更友好的内容

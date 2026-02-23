@@ -1,3 +1,8 @@
+---
+title: GPT
+createTime: 2026/01/27 14:47:05
+permalink: /notes/Lee_DL/6um3y9en/
+---
 # GPT
 
 > GPT 是一个 decoder-only 的 Transformer，自回归语言模型，用来“生成下一个 token”。
