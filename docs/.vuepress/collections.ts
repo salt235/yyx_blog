@@ -136,7 +136,11 @@ const youji = defineCollection({
   // 文章链接仍保持在 /youji/ 下，避免影响已有 permalink
   linkPrefix: '/youji/',
   title: '柚记',
-  autoFrontmatter: false
+  autoFrontmatter: {
+    title: true,
+    createTime: true,
+    permalink: true,
+  }
 })
 
 /**
