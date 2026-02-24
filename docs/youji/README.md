@@ -9,10 +9,10 @@ config:
       image: /pomelo.png
   - type: features
     features:
-      - title: 待办
-        link: ./todo.md
       - title: 为什么要跑步
-        link: ./run.md
+        link: ./why_run.md
+      - title: 跑步时我在想什么
+        link: ./think_run.md
 title: 柚记
 createTime: 2025/12/27 21:06:35
 permalink: /youji/p3p8m30n/
