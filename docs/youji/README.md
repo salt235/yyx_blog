@@ -13,6 +13,8 @@ config:
         link: ./why_run.md
       - title: 跑步时我在想什么
         link: ./think_run.md
+      - title: 关于讨厌
+        link: ./hate.md
 title: 柚记
 createTime: 2025/12/27 21:06:35
 permalink: /youji/p3p8m30n/
