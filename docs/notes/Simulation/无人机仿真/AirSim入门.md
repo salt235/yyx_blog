@@ -1,9 +1,7 @@
 ---
 title: AirSim入门
 createTime: 2026/03/11 14:09:11
-tags:
-    - 实践记录
-    - 学习
+permalink: /notes/Simulation/g68l52i2/
 ---
 
 飞控先用AirSim自带的`SimpleFlight`，后续对接到`px4`便于实机部署。

@@ -15,9 +15,9 @@ export default defineNavbarConfig([
       { text: 'Java', link: '/notes/Java/' },
       { text: 'DL', link: '/notes/Lee_DL/' },
       { text: 'ROS', link: '/notes/ROS/' },
-      { text: 'VLN', link: '/notes/VLN/' },
       { text: '文献阅读', link: '/notes/Papers/' },
       { text: '杂项笔记&记录', link: '/notes/Misc/' },
+      { text: '无人机仿真', link: '/notes/Simulation/' }
     ],
   },
   { text: '跑步页面', link: 'https://run.yyx235.top/' , icon: 'simple-icons:runrundotit' },

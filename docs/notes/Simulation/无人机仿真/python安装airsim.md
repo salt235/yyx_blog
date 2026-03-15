@@ -1,9 +1,7 @@
 ---
 title: python安装airsim
 createTime: 2026/01/06 10:42:59
-tags:
-    - 实践记录
-    - 学习
+permalink: /notes/Simulation/ybmtonfy/
 ---
 ## 目标
 

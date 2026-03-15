@@ -3,10 +3,6 @@ title: 深入浅出：全面解析Transformer工作原理
 createTime: 2026/01/08 12:38:39
 permalink: /notes/Misc/bddtcqhl/
 ---
-# 深入浅出：全面解析Transformer工作原理
-
-[TOC]
-
 
 
 ## 故事的开端：为什么我们需要Transformer？

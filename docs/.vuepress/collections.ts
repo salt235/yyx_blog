@@ -89,19 +89,6 @@ const notesROS = defineCollection({
   },
 })
 
-const notesVLN = defineCollection({
-  type: 'doc',
-  dir: 'notes/VLN',
-  linkPrefix: '/notes/VLN',
-  title: 'VLN 笔记',
-  sidebar: 'auto',
-  autoFrontmatter: {
-    title: true,
-    createTime: true,
-    permalink: true,
-  },
-})
-
 const notesPapers = defineCollection({
   type: 'doc',
   dir: 'notes/Papers',
@@ -120,6 +107,19 @@ const notesMisc = defineCollection({
   dir: 'notes/Misc',
   linkPrefix: '/notes/Misc',
   title: '杂项笔记&记录',
+  sidebar: 'auto',
+  autoFrontmatter: {
+    title: true,
+    createTime: true,
+    permalink: true,
+  },
+})
+
+const notesSimulation = defineCollection({
+  type: 'doc',
+  dir: 'notes/Simulation',
+  linkPrefix: '/notes/Simulation',
+  title: '无人机仿真',
   sidebar: 'auto',
   autoFrontmatter: {
     title: true,
@@ -153,8 +153,8 @@ export default defineCollections([
   notesJava,
   notesDL,
   notesROS,
-  notesVLN,
   notesPapers,
   notesMisc,
+  notesSimulation,
   youji,
 ])
