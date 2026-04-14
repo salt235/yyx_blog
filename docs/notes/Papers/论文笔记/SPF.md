@@ -5,7 +5,7 @@ permalink: /notes/Papers/d4x3d31u/
 ---
 ## See, Point, Fly: A Learning-Free VLM Framwork for Universal Unmanned Aerial Navigation
 
-> 看，指，飞：一种无需训练的视觉语言模型通用无ß人机导航框架
+> 看，指，飞：一种无需训练的视觉语言模型通用无人机导航框架
 
 ## 文献背景与研究问题
 
@@ -53,9 +53,9 @@ permalink: /notes/Papers/d4x3d31u/
 >
 > 离散动作：固定动作集合里选一个
 
-## SFP的方法介绍
+## SPF的方法介绍
 
-$ π(⋅∣ℓ,I_t)→m_t∈\mathbb{R}^3 $
+$$ π(⋅∣ℓ,I_t)→m_t∈\mathbb{R}^3 $$
 
 形式化地，作者定义一个策略函数 $ π(⋅∣ℓ,I_t) $，将“观测–指令”对映射为一个三维运动指令 $m_t \in \mathcal{A}$，其中动作空间 $\mathcal{A} \subseteq \mathbb{R}^3$ 表示可行的位移向量。整个系统包括了三个阶段：
 
