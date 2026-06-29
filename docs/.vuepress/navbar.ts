@@ -20,7 +20,7 @@ export default defineNavbarConfig([
       { text: '无人机仿真', link: '/notes/Simulation/' }
     ],
   },
-  { text: '跑步页面', link: 'https://run.yyx235.top/' , icon: 'simple-icons:runrundotit' },
+  { text: '跑步小记', link: '/running/' , icon: 'simple-icons:runrundotit' },
   { text: '柚记', link: '/youji/' , icon: 'lineicons:bulb-4'},
   { text: '友链', link: '/friends/' , icon: 'fa-solid:user-friends'}
 ])

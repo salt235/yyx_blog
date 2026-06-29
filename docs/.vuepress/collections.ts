@@ -49,6 +49,22 @@ const blog = defineCollection({
   },
 })
 
+const running = defineCollection({
+  type: 'post',
+  dir: 'running',
+  // /running/ 留给定制入口页，主题自带的归档列表作为备用入口。
+  link: '/running/list/',
+  linkPrefix: '/running/',
+  title: '跑步小记',
+  tags: false,
+  categories: false,
+  autoFrontmatter: {
+    title: true,
+    createTime: true,
+    permalink: false,
+  },
+})
+
 // 为每个笔记子目录单独配置 collection，避免侧边栏展示所有目录
 const notesJava = defineCollection({
   type: 'doc',
@@ -150,6 +166,7 @@ const youji = defineCollection({
  */
 export default defineCollections([
   blog,
+  running,
   notesJava,
   notesDL,
   notesROS,

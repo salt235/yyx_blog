@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+import RunningJournal from './theme/components/RunningJournal.vue'
 // import RepoCard from 'vuepress-theme-plume/features/RepoCard.vue'
 // import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 // import NpmBadgeGroup from 'vuepress-theme-plume/features/NpmBadgeGroup.vue'
@@ -10,6 +11,7 @@ import './theme/styles/custom.css' // your custom styles
 
 export default defineClientConfig({
   enhance({ app }) {
+    app.component('RunningJournal', RunningJournal)
     // built-in components
     // app.component('RepoCard', RepoCard)
     // app.component('NpmBadge', NpmBadge)
