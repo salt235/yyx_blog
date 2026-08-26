@@ -2,9 +2,6 @@
 title: 一些关于PSDK开发的C++基础知识补全
 createTime: 2026/06/25 13:14:14
 permalink: /notes/LanguageLearning/cpp/psdk-basics.html
-tags:
-    - 学习
-    - 笔记
 ---
 
 主要知识点：

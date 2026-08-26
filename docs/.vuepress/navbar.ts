@@ -13,7 +13,9 @@ export default defineNavbarConfig([
     text: '笔记', icon: 'material-symbols:book-4-rounded',
     items: [
       { text: '语言学习', link: '/notes/LanguageLearning/' },
+      { text: '开发工具', link: '/notes/DevTools/' },
       { text: '科研与项目', link: '/notes/Projects/' },
+      { text: '无人机入门', link: '/notes/UAV/' },
       { text: '机器学习与深度学习', link: '/notes/MachineLearning/' },
       { text: 'ROS学习', link: '/notes/ROS/' },
       { text: '文献阅读笔记', link: '/notes/Papers/' },

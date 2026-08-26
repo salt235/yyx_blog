@@ -2,8 +2,9 @@
 title: RustDesk配置中继云服务器
 createTime: 2026/04/14 13:33:00
 tags:
-    - 技术
-    - 文档
+  - RustDesk
+  - 远程桌面
+  - 自建服务
 ---
 
 
@@ -58,7 +59,6 @@ Your public key is xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 在RustDesk的客户端中，“设置”-“网络”。
 
 ID服务器填服务器的ip地址，Key就填那个public key，另外两个留空。
-
 
 
 

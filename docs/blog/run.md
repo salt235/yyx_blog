@@ -2,8 +2,9 @@
 title: 我的跑步历程（截至2026.2）
 createTime: 2026/02/23 14:58:17
 tags:
-    - 跑步
-    - 记录 
+  - 跑步
+  - 训练总结
+  - 个人成长
 sticky: 3
 ---
 <div align="center">

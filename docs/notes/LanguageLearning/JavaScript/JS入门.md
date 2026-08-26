@@ -2,9 +2,6 @@
 title: JS入门
 createTime: 2026/05/13 14:01:44
 permalink: /notes/LanguageLearning/javascript/getting-started.html
-tags:
-    - 学习
-    - 笔记
 ---
 
 [参考教程：](https://liaoxuefeng.com/books/javascript/introduction/index.html)

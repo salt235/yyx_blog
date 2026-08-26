@@ -128,6 +128,32 @@ const notesProjects = defineCollection({
   },
 })
 
+const notesUAV = defineCollection({
+  type: 'doc',
+  dir: 'notes/UAV',
+  linkPrefix: '/notes/UAV',
+  title: '无人机入门',
+  sidebar: 'auto',
+  autoFrontmatter: {
+    title: true,
+    createTime: true,
+    permalink: true,
+  },
+})
+
+const notesDevTools = defineCollection({
+  type: 'doc',
+  dir: 'notes/DevTools',
+  linkPrefix: '/notes/DevTools',
+  title: '开发工具',
+  sidebar: 'auto',
+  autoFrontmatter: {
+    title: true,
+    createTime: true,
+    permalink: true,
+  },
+})
+
 /**
  * 导出所有的 collections
  * (blog 为博客示例，如果不需要博客功能，请删除)
@@ -141,4 +167,6 @@ export default defineCollections([
   notesMisc,
   notesLanguageLearning,
   notesProjects,
+  notesUAV,
+  notesDevTools,
 ])
