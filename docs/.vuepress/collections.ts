@@ -49,41 +49,12 @@ const blog = defineCollection({
   },
 })
 
-const running = defineCollection({
-  type: 'post',
-  dir: 'running',
-  // /running/ 留给定制入口页，主题自带的归档列表作为备用入口。
-  link: '/running/list/',
-  linkPrefix: '/running/',
-  title: '跑步小记',
-  tags: false,
-  categories: false,
-  autoFrontmatter: {
-    title: true,
-    createTime: true,
-    permalink: false,
-  },
-})
-
 // 为每个笔记子目录单独配置 collection，避免侧边栏展示所有目录
-const notesJava = defineCollection({
-  type: 'doc',
-  dir: 'notes/Java',
-  linkPrefix: '/notes/Java',
-  title: 'Java 笔记',
-  sidebar: 'auto',
-  autoFrontmatter: {
-    title: true,
-    createTime: true,
-    permalink: true,
-  },
-})
-
 const notesDL = defineCollection({
   type: 'doc',
-  dir: 'notes/Lee_DL',
-  linkPrefix: '/notes/Lee_DL',
-  title: '深度学习笔记',
+  dir: 'notes/MachineLearning',
+  linkPrefix: '/notes/MachineLearning',
+  title: '机器学习与深度学习',
   sidebar: 'auto',
   autoFrontmatter: {
     title: true,
@@ -96,7 +67,7 @@ const notesROS = defineCollection({
   type: 'doc',
   dir: 'notes/ROS',
   linkPrefix: '/notes/ROS',
-  title: 'ROS 笔记',
+  title: 'ROS学习',
   sidebar: 'auto',
   autoFrontmatter: {
     title: true,
@@ -109,7 +80,7 @@ const notesPapers = defineCollection({
   type: 'doc',
   dir: 'notes/Papers',
   linkPrefix: '/notes/Papers',
-  title: '文献阅读',
+  title: '文献阅读笔记',
   sidebar: 'auto',
   autoFrontmatter: {
     title: true,
@@ -131,11 +102,11 @@ const notesMisc = defineCollection({
   },
 })
 
-const notesSimulation = defineCollection({
+const notesLanguageLearning = defineCollection({
   type: 'doc',
-  dir: 'notes/Simulation',
-  linkPrefix: '/notes/Simulation',
-  title: '无人机仿真',
+  dir: 'notes/LanguageLearning',
+  linkPrefix: '/notes/LanguageLearning',
+  title: '语言学习',
   sidebar: 'auto',
   autoFrontmatter: {
     title: true,
@@ -144,19 +115,17 @@ const notesSimulation = defineCollection({
   },
 })
 
-const youji = defineCollection({
-  type: 'post',
-  dir: 'youji',
-  // 列表页避免与 docs/youji/README.md 的 /youji/ 路由冲突
-  link: '/youji/list/',
-  // 文章链接仍保持在 /youji/ 下，避免影响已有 permalink
-  linkPrefix: '/youji/',
-  title: '柚记',
+const notesProjects = defineCollection({
+  type: 'doc',
+  dir: 'notes/Projects',
+  linkPrefix: '/notes/Projects',
+  title: '科研与项目',
+  sidebar: 'auto',
   autoFrontmatter: {
     title: true,
     createTime: true,
     permalink: true,
-  }
+  },
 })
 
 /**
@@ -166,12 +135,10 @@ const youji = defineCollection({
  */
 export default defineCollections([
   blog,
-  running,
-  notesJava,
   notesDL,
   notesROS,
   notesPapers,
   notesMisc,
-  notesSimulation,
-  youji,
+  notesLanguageLearning,
+  notesProjects,
 ])

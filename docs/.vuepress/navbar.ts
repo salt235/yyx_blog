@@ -12,15 +12,13 @@ export default defineNavbarConfig([
   { 
     text: '笔记', icon: 'material-symbols:book-4-rounded',
     items: [
-      { text: 'Java', link: '/notes/Java/' },
-      { text: 'DL', link: '/notes/Lee_DL/' },
-      { text: 'ROS', link: '/notes/ROS/' },
-      { text: '文献阅读', link: '/notes/Papers/' },
-      { text: '杂项笔记&记录', link: '/notes/Misc/' },
-      { text: '无人机仿真', link: '/notes/Simulation/' }
+      { text: '语言学习', link: '/notes/LanguageLearning/' },
+      { text: '科研与项目', link: '/notes/Projects/' },
+      { text: '机器学习与深度学习', link: '/notes/MachineLearning/' },
+      { text: 'ROS学习', link: '/notes/ROS/' },
+      { text: '文献阅读笔记', link: '/notes/Papers/' },
+      { text: '杂项笔记&记录', link: '/notes/Misc/' }
     ],
   },
-  { text: '跑步小记', link: '/running/' , icon: 'simple-icons:runrundotit' },
-  { text: '柚记', link: '/youji/' , icon: 'lineicons:bulb-4'},
   { text: '友链', link: '/friends/' , icon: 'fa-solid:user-friends'}
 ])
