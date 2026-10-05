@@ -22,5 +22,18 @@ list:
       -
         icon: github
         link: https://github.com/m0feng
+
+  -
+    name: fxx514
+    link: https://blog.fxx514.click/
+    avatar: https://q.qlogo.cn/headimg_dl?dst_uin=2445071992&spec=640&img_type=jpg
+    desc: 池州市长，FPS专精高手。
+    socials:
+      -
+        icon: github
+        link: https://github.com/xxf514
+
 ---
+
+
 
