@@ -4,7 +4,6 @@ createTime: 2026/09/16 00:00:00
 permalink: /notes/UAV/px4/tuning/part-4-angle-velocity-controller.html
 ---
 
-# PX4 调参 Part 4：角度与速度控制器调参
 > 来源：[PX4 Ultimate Tuning Guide Part 4 Angle Controller, Altitude Controller, Velocity Controller](https://www.youtube.com/watch?v=gNtwzh1c9T4&t=350s)（Chris Rosser）
 > 前置：[PX4 调参 Part 3 Rate PID 调参流程总结](/notes/UAV/px4/tuning/part-3-rate-pid.html)（Rate 环必须先调好）
 > 相关：[PX4 多旋翼四个控制环](/notes/UAV/px4/control-loops.html)、[PX4 滤波与 PID 调参](/notes/UAV/px4/pid-tuning.html)

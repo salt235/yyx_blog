@@ -4,13 +4,11 @@ createTime: 2026/07/06 11:16:35
 permalink: /notes/Projects/raspberry-pi/lightweight-nas.html
 ---
 
-# 树莓派轻量NAS部署
-
 最近心血来潮，海鲜市场收了个4G的树莓派5，主要想用来学习和折腾。我接了个铠侠的256G 2.5寸 SSD，把树莓派的SD卡拔了，系统装在了SSD上，装了个桌面板的Ubuntu24.04。但后来感觉用桌面还是有点卡，就把桌面关掉了，还是纯命令行舒服。
 
 现在这个树莓派就如下图所示，躺在我的工位上，接了个网线24h运行，同时我配了一下tailscale，现在我的所有设备都在一个虚拟局域网下，这个派直接就化身为一个小服务器了。这次我试着部署了个轻量的NAS，类似于一个虚拟文件夹吧，用的一个叫Samba的项目。
 
-![树莓派](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/%E6%A0%91%E8%8E%93%E6%B4%BE.png)
+![树莓派 =1080x938](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/%E6%A0%91%E8%8E%93%E6%B4%BE.png)
 
 ## 1. Tailscale 网络状态验证
 

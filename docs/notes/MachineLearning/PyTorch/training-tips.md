@@ -4,7 +4,6 @@ createTime: 2026/09/30 00:00:00
 permalink: /notes/MachineLearning/pytorch/training-tips.html
 ---
 
-# PyTorch 模型保存、断点续训与微调
 ## 1. 模型的保存和加载
 在 pytorch 中，对象就是模型，所以我们常常听到序列化和反序列化，就是将训练好的模型从内存中保存到硬盘里，当要使用的时候，再从硬盘中加载。
 ### torch.save / torch.load

@@ -4,7 +4,6 @@ createTime: 2026/09/29 00:00:00
 permalink: /notes/MachineLearning/pytorch/optimizers.html
 ---
 
-# PyTorch 优化器
 优化器使用 [自动求导](/notes/MachineLearning/pytorch/autograd.html) 得到的梯度，根据 [损失函数](/notes/MachineLearning/pytorch/loss-functions.html) 的结果更新模型参数。
 ## Optimizer
 Optimizer 类是所有具体优化器的基类。

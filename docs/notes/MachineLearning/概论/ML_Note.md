@@ -1,9 +1,8 @@
 ---
-title: ML_Note
+title: "李宏毅ML_Note"
 createTime: 2025/12/27 14:44:18
 permalink: /notes/MachineLearning/eezwc65m/
 ---
-# 李宏毅ML_Note
 
 ## 机器学习是什么？
 
@@ -33,4 +32,4 @@ permalink: /notes/MachineLearning/eezwc65m/
 
 $y = c\frac{1}{1 + e^{-(b+wx_1)}}$
 
-![image-20251204180137061](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251204180137061.png)
+![image-20251204180137061 =627x528](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251204180137061.png)

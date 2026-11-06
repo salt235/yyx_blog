@@ -1,11 +1,8 @@
 ---
-title: NeLV
+title: "NeLV：新一代无人机大语言模型——从自然语言到自主飞行"
 createTime: 2026/01/08 12:28:13
 permalink: /notes/Papers/400pegr6/
 ---
-# 新一代无人机大语言模型：从自然语言到自主飞行
-
-
 
 Liangqi Yuan, Student Member, IEEE, Chuhao Deng, Student Member, IEEE, Dong-Jun Han, Member, IEEE, Inseok Hwang, Member, IEEE, Sabine Brunswicker, and Christopher G. Brinton, Senior Member, IEEE
 

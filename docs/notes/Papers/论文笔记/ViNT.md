@@ -1,9 +1,8 @@
 ---
-title: ViNT
+title: "ViNT：面向视觉导航的基础模型"
 createTime: 2026/01/11 21:18:57
 permalink: /notes/Papers/r9r28azs/
 ---
-# ViNT：面向视觉导航的基础模型
 
 > ViNT: A Foundation Model for Visual Navigation
 
@@ -26,7 +25,7 @@ ViNT 在多个现有导航数据集上进行了训练，这些数据集涵盖了
 
 此外，ViNT 还可以通过一种受 **prompt-tuning** 启发的方法适配新的任务定义：即用另一种任务模态（例如 GPS 航点或逐步转向指令）的编码替换原有的目标编码器，并将其嵌入到同一目标 token 空间中。上述灵活性及其对多样化下游问题域的适应能力，使 ViNT 成为一种面向移动机器人领域的有效基础模型。
 
-![Overview](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768110193892.png)
+![Overview =1074x381](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768110193892.png)
 
 ## 1. 引言
 
@@ -52,7 +51,7 @@ ViNT 在多个现有导航数据集上进行了训练，这些数据集涵盖了
 
 进一步地，ViNT 可以仅使用少量数据进行微调，即可适配新的任务目标指定模态——例如 GPS 航点或高层次路径指令——从而使其成为支持多种导航应用的基础模型。最后，我们对 ViNT 所展现出的一些**涌现行为（emergent behaviors）**进行了定性分析，例如其隐式偏好以及对动态行人的绕行行为。
 
- 模型权重以及训练与部署代码将发布于[项目主页](general-navigation-models.github.io)。
+ 模型权重以及训练与部署代码将发布于[项目主页](https://general-navigation-models.github.io/vint/)。
 
 ## 2. 相关工作
 
@@ -87,7 +86,7 @@ ViNT 是一个包含约 **3100 万参数**的模型，基于 Transformer 架构�
 - 在资源受限的机器人平台上实现快速、高效的推理
 - 具备通过**提示或微调**适配下游任务的能力
 
-![ViNT Model Architecture](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768112820840.png)
+![ViNT Model Architecture =1038x391](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768112820840.png)
 
 ### 3.2 Token化（Tokenization）
 
@@ -212,7 +211,7 @@ ViNT 可部署在任何配备机载摄像头和低层速度控制器的移动机
 
 7. ViNT 执行动作
 
-![Long-horizon navigation](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768115801619.png)
+![Long-horizon navigation =1000x333](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768115801619.png)
 
 ### 4.1 高层规划与探索（High-Level Planning and Exploration）
 
@@ -253,7 +252,7 @@ ViNT 可部署在任何配备机载摄像头和低层速度控制器的移动机
 
 如下图：候选方案以黄色显示，最佳动作对应的最优候选方案以蓝色标记。
 
-![复杂室内环境中可视化ViNT探索轨迹](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768135213240.png)
+![复杂室内环境中可视化ViNT探索轨迹 =986x344](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768135213240.png)
 
 ## 5.ViNT 作为下游任务（Downstream Tasks）的基础模型
 
@@ -301,7 +300,7 @@ ViNT 的 Transformer **期望输入的是一组 token embedding**：
 
 ### 6.1 导航与探索性能（Q1）
 
-![性能优秀](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768137160432.png)
+![性能优秀 =1025x240](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768137160432.png)
 
 **任务类型：**
 
@@ -323,7 +322,7 @@ ViNT 的 Transformer **期望输入的是一组 token embedding**：
 
 ### 6.2 零样本泛化到新机器人（Q2）
 
-![零样本泛化](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768137196306.png)
+![零样本泛化 =444x274](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768137196306.png)
 
 **实验方式：**
 
@@ -345,7 +344,7 @@ ViNT 的 Transformer **期望输入的是一组 token embedding**：
 
 ### 6.3 少样本微调能力（Q3）
 
-![CARLA自动驾驶](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768137337804.png)
+![CARLA自动驾驶 =415x568](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1768137337804.png)
 
 **设置：**
 

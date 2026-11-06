@@ -3,7 +3,6 @@ title: Bert
 createTime: 2026/01/27 14:25:58
 permalink: /notes/MachineLearning/f2mtbtwb/
 ---
-# Bert
 
 > 监督学习和自监督学习：
 > 
@@ -17,7 +16,7 @@ permalink: /notes/MachineLearning/f2mtbtwb/
 
 > 通过随机遮盖部分输入 token，让模型在双向上下文条件下预测被遮盖的词。
 
-![Masking Inpput](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769492550609.png)
+![Masking Inpput =678x510](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769492550609.png)
 
 ### Mask 策略（BERT 原始设定）
 
@@ -38,7 +37,7 @@ permalink: /notes/MachineLearning/f2mtbtwb/
 
 ## 2. Next Sentence Prediction
 
-![Next Sentence Prediction](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769493037241.png)
+![Next Sentence Prediction =649x480](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769493037241.png)
 
 ### 训练目标
 
@@ -61,7 +60,7 @@ permalink: /notes/MachineLearning/f2mtbtwb/
 
 ### 序列分类
 
-![Case 1](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769493667408.png)
+![Case 1 =648x456](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769493667408.png)
 
 - **BERT 当编码器用**
    输入一句话（在最前面加 `[CLS]`），BERT 输出每个 token 的表示。
@@ -76,7 +75,7 @@ permalink: /notes/MachineLearning/f2mtbtwb/
 
 ### 词性标注
 
-![Case 2](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769493959900.png)
+![Case 2 =656x470](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769493959900.png)
 
 - **每个 token 都要预测一个标签**
    输入是一个序列，输出长度**和输入一样**。

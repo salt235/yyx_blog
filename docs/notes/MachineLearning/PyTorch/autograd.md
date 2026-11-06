@@ -4,7 +4,6 @@ createTime: 2026/09/15 00:00:00
 permalink: /notes/MachineLearning/pytorch/autograd.html
 ---
 
-# PyTorch 自动求导
 PyTorch 中，所有神经网络的核心是 `autograd` 包。autograd包为张量上的所有操作提供了自动求导机制。它是一个在运行时定义 ( define-by-run ）的框架，这意味着反向传播是根据代码如何运行来决定的，并且每次迭代可以是不同的。
 本节以前置的 [计算图](/notes/MachineLearning/pytorch/computation-graph.html) 为基础，并会用到 [Tensor](/notes/MachineLearning/pytorch/tensor.html) 的梯度相关属性。
 ## Autograd

@@ -4,13 +4,11 @@ createTime: 2026/07/02 19:54:20
 permalink: /notes/UAV/px4/basics.html
 ---
 
-# PX4一些基础概念
-
 ## 1. PX4架构
 
 ### 以飞控为中心的简单系统
 
-![image-20260701140303622](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260701140303622.png)
+![image-20260701140303622 =1280x1062](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260701140303622.png)
 
 - PX4 和外界所有通信都必须经过 MAVLink（或者封装后的 MAVSDK/ROS）
 
@@ -22,7 +20,7 @@ permalink: /notes/UAV/px4/basics.html
 
 ### 飞控加机载电脑的系统
 
-  ![image-20260701141139316](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260701141139316.png)
+  ![image-20260701141139316 =1280x814](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260701141139316.png)
 
 核心区别：**单独飞控架构里，PX4 飞控既是飞行控制核心，也是主要计算中心；飞控加伴随计算机架构里，PX4 飞控只负责底层飞行稳定，复杂任务被转移到 Linux 电脑上。**
 
@@ -68,7 +66,7 @@ RC 协议负责把遥控器摇杆输入传给 PX4，PX4 再根据当前模式生
 
 这张图是“PX4 软件内部如何把数据一步步变成电机输出”。
 
-![5a5c2b6bc25425b7d496d7ec1dd33aa9](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/5a5c2b6bc25425b7d496d7ec1dd33aa9.png)
+![5a5c2b6bc25425b7d496d7ec1dd33aa9 =1232x1960](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/5a5c2b6bc25425b7d496d7ec1dd33aa9.png)
 
 对应PX4源码里的一些东西：
 

@@ -4,14 +4,13 @@ createTime: 2026/09/15 00:00:00
 permalink: /notes/MachineLearning/pytorch/evaluation-metrics.html
 ---
 
-# PyTorch 模型评价指标
 [参考文档](https://datawhalechina.github.io/thorough-pytorch/%E7%AC%AC%E9%9B%B6%E7%AB%A0/0.2%20%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87.html#)
 ## 模型评价指标
 ### 1. 混淆矩阵
 混淆矩阵（也称误差矩阵）是机器学习和深度学习中表示精度评价的一种标准格式，常用n行n列的矩阵形式来表示。其列代表的是预测的类别，行代表的是实际的类标，以一个常见的二分类的混淆矩阵为例。我们会发现二分类的混淆矩阵包括**TP, FP, FN, TN**，其中TP为True Positive，True代表实际和预测相同，Positive代表预测为正样本。同理可得，False Positive (FP)代表的是实际类别和预测类标不同，并且预测类别为正样本，实际类别为负样本；False Negative (FN)代表的是实际类别和预测类标不同，并且预测类别为负样本，实际类别为正样本；True Negative (TP)代表的是实际类别和预测类标相同，预测类别和实际类别均为负样本。
-![image.png](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260915083848068.png)
+![image.png =1241x590](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260915083848068.png)
 举例：假设对100个人进行核酸检测，实际结果为98个阴性，2个阳性，但是我们的模型对核酸检测结果进行预测，预测结果为94个阴性，6个阳性结果，在这里我们定义核酸结果阴性为正样本，核酸结果阳性为负样本。在这个例子中，TP代表实际为阴性且被预测为阴性的数量，共有94人；FP代表实际为阳性，模型预测为阴性的数量，共有0人；FN代表实际为阴性被模型判断为阳性的数量，共有4人；TN代表实际为阳性，被模型识别为阳性的数量，共有2人。
-![image.png](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260915083957305.png)
+![image.png =990x792](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260915083957305.png)
 这是一个10类标的混淆矩阵。们在拥有混淆矩阵后，可以计算Accuracy，Precision，Recall，F1 Score等衡量模型的评价指标。
 ### 2. Overall Accuracy
 代表了所有预测正确的样本占所有预测样本总数的比例：

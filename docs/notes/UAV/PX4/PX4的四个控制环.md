@@ -4,11 +4,9 @@ createTime: 2026/07/03 18:53:18
 permalink: /notes/UAV/px4/control-loops.html
 ---
 
-# PX4多旋翼的四个控制环
-
 PX4 多旋翼采用级联控制结构。外层控制器的输出作为内层控制器的输入，最终将位置或速度等高层目标逐步转换为电机输出。
 
-![多旋翼控制架构](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/%E5%A4%9A%E6%97%8B%E7%BF%BC%E6%8E%A7%E5%88%B6%E6%9E%B6%E6%9E%84.jpg)
+![多旋翼控制架构 =1277x442](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/%E5%A4%9A%E6%97%8B%E7%BF%BC%E6%8E%A7%E5%88%B6%E6%9E%B6%E6%9E%84.jpg)
 
 这是 PX4 多旋翼控制的总架构图。
 

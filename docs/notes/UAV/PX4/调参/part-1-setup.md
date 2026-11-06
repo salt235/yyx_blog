@@ -4,7 +4,6 @@ createTime: 2026/09/16 00:00:00
 permalink: /notes/UAV/px4/tuning/part-1-setup.html
 ---
 
-# PX4 调参 Part 1：装机与基础设置
 > 来源：[PX4 Ultimate Tuning Guide - Part 1 Setup](https://www.youtube.com/watch?v=jxqWg7s5jv8)（Chris Rosser）
 > 相关：[PX4 基础概念](/notes/UAV/px4/basics.html)、[DIY 无人机组装与试飞记录](/notes/UAV/basics/diy-uav-log.html)
 > 目标：把 PX4 无人机装好、接线、配置到可安全首飞，为后续滤波与 PID 调参打基础。

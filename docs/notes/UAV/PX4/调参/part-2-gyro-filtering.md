@@ -4,7 +4,6 @@ createTime: 2026/09/16 00:00:00
 permalink: /notes/UAV/px4/tuning/part-2-gyro-filtering.html
 ---
 
-# PX4 调参 Part 2：陀螺仪滤波
 > 来源：[PX4 Ultimate Tuning Guide - Part 2 Gyro Filtering](https://www.youtube.com/watch?v=PQOXJpstZx4&t=1154s)（Chris Rosser）
 > 前置：[PX4 调参 Part 1 装机与基础设置流程总结](/notes/UAV/px4/tuning/part-1-setup.html)
 > 相关：[PX4 滤波与 PID 调参](/notes/UAV/px4/pid-tuning.html)、[PX4 多旋翼四个控制环](/notes/UAV/px4/control-loops.html)

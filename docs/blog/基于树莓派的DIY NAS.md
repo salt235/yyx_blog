@@ -3,12 +3,9 @@ title: '基于树莓派的 DIY NAS'
 createTime: 2026/07/23 20:08:53
 permalink: /blog/raspberry-pi-diy-nas.html
 tags:
-  - 树莓派
-  - NAS
-  - 硬件DIY
+  - 硬件折腾
+  - 技术实践
 ---
-
-# 基于树莓派的 DIY NAS
 
 参考项目：https://the-diy-life.com/building-a-4-bay-3-5-nas-with-a-raspberry-pi-5-and-3d-printed-enclosure/
 
@@ -55,43 +52,43 @@ tags:
 
 ### 大部分的配件图
 
-![c5a7100b7a86fb003731a7baa68986b3](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/c5a7100b7a86fb003731a7baa68986b3.png)
+![c5a7100b7a86fb003731a7baa68986b3 =2772x2080](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/c5a7100b7a86fb003731a7baa68986b3.png)
 
-![90e75bda603aa4b621322f9e351f91cc](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/90e75bda603aa4b621322f9e351f91cc.png)
+![90e75bda603aa4b621322f9e351f91cc =2772x2080](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/90e75bda603aa4b621322f9e351f91cc.png)
 
 ### 安装热熔螺母
 
 还好家里有电烙铁。
 
-![56d444c937591b95343b6bf1d7818713](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/56d444c937591b95343b6bf1d7818713.png)
+![56d444c937591b95343b6bf1d7818713 =2084x2778](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/56d444c937591b95343b6bf1d7818713.png)
 
 ### 安装硬盘到硬盘盒
 
-![718c943b497fff8b7c6cf9aeb754dd0d](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/718c943b497fff8b7c6cf9aeb754dd0d.png)
+![718c943b497fff8b7c6cf9aeb754dd0d =2772x2080](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/718c943b497fff8b7c6cf9aeb754dd0d.png)
 
 ### 安装风扇
 
-![98526ee8d36e41eb05489250d9ef2251](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/98526ee8d36e41eb05489250d9ef2251.png)
+![98526ee8d36e41eb05489250d9ef2251 =2084x2778](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/98526ee8d36e41eb05489250d9ef2251.png)
 
-![d78f0e3d5741b3c05c068102a16350fb](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/d78f0e3d5741b3c05c068102a16350fb.png)
+![d78f0e3d5741b3c05c068102a16350fb =2778x2084](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/d78f0e3d5741b3c05c068102a16350fb.png)
 
 这边发现这个公母一体的接口太大，顶到风扇了，后来想把接口的上面一部分剪掉一些，但是被我剪坏了，无奈重买了一个风扇。另外买了一个大4pin的延长线，避免顶到风扇。
 
-![eae6aaf6ff2409454276ad3518b70616](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/eae6aaf6ff2409454276ad3518b70616.png)
+![eae6aaf6ff2409454276ad3518b70616 =2084x2778](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/eae6aaf6ff2409454276ad3518b70616.png)
 
 很极限，最终这个延长线的方案成功了，后来也测试没问题，风扇正常转。
 
 ### 安装树莓派、HAT和sata线
 
-![6868f649f0740d0445598d114a27a4fb](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/6868f649f0740d0445598d114a27a4fb.png)
+![6868f649f0740d0445598d114a27a4fb =2772x2080](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/6868f649f0740d0445598d114a27a4fb.png)
 
 ### 安装前壳
 
-![14d2f418f82be79eedecc5327cd22879](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/14d2f418f82be79eedecc5327cd22879.png)
+![14d2f418f82be79eedecc5327cd22879 =2772x2080](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/14d2f418f82be79eedecc5327cd22879.png)
 
 ### 插电测试
 
-![6338f4ee703154a1c66ae37ff297e1d0](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/6338f4ee703154a1c66ae37ff297e1d0.png)
+![6338f4ee703154a1c66ae37ff297e1d0 =2084x2778](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/6338f4ee703154a1c66ae37ff297e1d0.png)
 
 没问题，待机温度在41℃左右，还是非常优秀的。
 
@@ -99,9 +96,9 @@ tags:
 
 后来把4块硬盘全装上了，解锁完全体，大功告成。
 
-![dbac2884ed543a08ea23aa40e9671e93](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/dbac2884ed543a08ea23aa40e9671e93.png)
+![dbac2884ed543a08ea23aa40e9671e93 =2772x2078](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/dbac2884ed543a08ea23aa40e9671e93.png)
 
-![18c9abe4ce69ac9856f626607ee795db](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/18c9abe4ce69ac9856f626607ee795db.png)
+![18c9abe4ce69ac9856f626607ee795db =2772x2080](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/18c9abe4ce69ac9856f626607ee795db.png)
 
 ## 基础配置
 
@@ -181,7 +178,7 @@ hostname -I
 
 得到ip是`192.168.3.202`，在win中打开`http://192.168.3.202`（需在局域网下），如果不在局域网，配置好tailscale之后，可以直接打开`http://yyx-pi`，成功打开面板，输入默认的账号密码。
 
-![image-20260817163700033](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260817163700033.png)
+![image-20260817163700033 =944x833](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260817163700033.png)
 
 ### OMV 的初始配置
 
@@ -201,7 +198,7 @@ hostname -I
 
   必须现在qq邮箱网站里面开启 POP3/IMAP/SMTP 服务，生成 SMTP 的16位授权码，然后按如下方式填写，其中的密码就是刚刚生成的授权码。
   
-  ![image-20260819140226127](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260819140226127.png)
+  ![image-20260819140226127 =988x679](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260819140226127.png)
 
 ## NAS 配置
 
@@ -217,7 +214,7 @@ OMV 将 RAID 功能拆分成了单独的插件，所以需要先安装 `openmedi
 
 然后在`存储器-RAID管理`中，选择`raid5`并添加四个盘。
 
-![image-20260819144847043](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260819144847043.png)
+![image-20260819144847043 =812x308](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260819144847043.png)
 
 第一次 RAID5 初始化需要等待同步，可以用以下命令来查看进度。
 
@@ -241,7 +238,7 @@ cat /proc/mdstat
 
 然后在 `存储器-共享文件夹`里面创建一个data目录，相当于“根目录”了，后续只要把这个文件夹共享，里面的所有子目录就等于共享了。
 
-![image-20260819201458600](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260819201458600.png)
+![image-20260819201458600 =1220x463](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260819201458600.png)
 
 ### 开启SMB
 

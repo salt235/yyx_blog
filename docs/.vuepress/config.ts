@@ -99,6 +99,14 @@ export default defineUserConfig({
      * markdown
      * @see https://theme-plume.vuejs.press/config/markdown/
      */
+    markdown: {
+      image: {
+        lazyload: true,
+        size: true,
+      },
+      // 本地图片自动读取宽高；远程图片在正文中标注真实尺寸，构建时无需请求图床。
+      imageSize: 'local',
+    },
     // markdown: {
     //   abbr: true,         // 启用 abbr 语法  *[label]: content
     //   annotation: true,   // 启用 annotation 语法  [+label]: content

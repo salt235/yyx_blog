@@ -4,7 +4,6 @@ createTime: 2026/09/15 00:00:00
 permalink: /notes/MachineLearning/pytorch/tensor.html
 ---
 
-# PyTorch Tensor
 张量是现代机器学习的基础。它的核心是一个数据容器，多数情况下，它包含数字，有时候它也包含字符串，但这种情况比较少。因此可以把它想象成一个数字的水桶。
 Tensor 的 `requires_grad`、`grad_fn` 和 `is_leaf` 属性会在 [计算图](/notes/MachineLearning/pytorch/computation-graph.html) 与 [自动求导](/notes/MachineLearning/pytorch/autograd.html) 中继续使用。
 这里有一些存储在各种类型张量的公用数据集类型：

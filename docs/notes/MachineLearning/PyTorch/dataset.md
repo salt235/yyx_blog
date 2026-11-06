@@ -4,7 +4,6 @@ createTime: 2026/09/26 00:00:00
 permalink: /notes/MachineLearning/pytorch/dataset.html
 ---
 
-# PyTorch Dataset
 pytorch 提供的 torch.utils.data.Dataset 类是一个抽象基类，供用户继承，编写自己的 dataset，实现对数据的读取。在 Dataset 类的编写中必须要实现的两个函数是 `__getitem__()` 和 `__len__()` 。
 单个样本可在这里完成 [图像变换](/notes/MachineLearning/pytorch/transforms.html)，之后由 [DataLoader](/notes/MachineLearning/pytorch/dataloader.html) 读取并拼成 batch。
 - **getitem**：需要实现读取一个样本的功能。通常是传入索引（index，可以是序号或key），然后实现从磁盘中读取数据，并进行预处理（包括online的数据增强），然后返回一个样本的数据。数据可以是包括模型需要的输入、标签，也可以是其他元信息，例如图片的路径。**getitem返回的数据会在dataloader中组装成一个batch**。即，通常情况下是在dataloader中调用Dataset的**getitem**函数获取一个样本。
@@ -171,7 +170,7 @@ __len__()       # 返回样本数量
 ## 4. 一些常用 APIs
 ### concat
 在实际项目中，数据的来源往往是多源的，可能是多个中心收集的，也可能来自多个时间段的收集，很难将可用数据统一到一个数据形式。通常有两种做法，一种是固定一个数据形式，所有获取到的数据经过整理，变为统一格式，然后用一个Dataset即可读取。还有一种更为灵活的方式是为每批数据编写一个Dataset，然后使用torch.utils.data.ConcatDataset类将他们拼接起来，这种方法可以灵活的处理多源数据，也可以很好的使用别人的数据及Dataset。
-![image.png](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260926212839875.png)
+![image.png =1748x627](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260926212839875.png)
 ### subset
 subset可根据**指定的索引**获取子数据集，Subset也是Dataset类，同样包含 `__len__` 和 `__getitem__`。
 ```python

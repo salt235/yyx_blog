@@ -4,8 +4,6 @@ createTime: 2026/07/07 15:06:04
 permalink: /notes/UAV/ros1-px4/demo-code-analysis.html
 ---
 
-# ROS1入门仿真demo代码分析
-
 ## 代码注释分析
 
 ```cpp

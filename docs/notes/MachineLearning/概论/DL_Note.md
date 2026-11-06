@@ -1,16 +1,12 @@
 ---
-title: DL_Note
+title: "DL一些笔记"
 createTime: 2025/12/27 14:44:18
 permalink: /notes/MachineLearning/t9rbwk0z/
 ---
-# DL一些笔记
-
-
-
 
 ## 如何优化代码
 
-![image-20251206152115946](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206152115946.png)
+![image-20251206152115946 =702x519](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206152115946.png)
 
 ### 1. 诊断步骤：检查训练数据上的损失 ($L_{\text{train}}$)
 
@@ -48,7 +44,7 @@ permalink: /notes/MachineLearning/t9rbwk0z/
 
 ### 1.数据层面
 
-![image-20251206153805048](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206153805048.png)
+![image-20251206153805048 =917x690](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206153805048.png)
 
 - **增加训练数据 (More Training Data):** 这是最可靠的方法，直接提供更多、更具普遍性的样本，迫使模型学习更抽象的特征。
 
@@ -56,7 +52,7 @@ permalink: /notes/MachineLearning/t9rbwk0z/
 
 ### 2.模型层面
 
-![image-20251206154155277](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206154155277.png)
+![image-20251206154155277 =914x676](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206154155277.png)
 
 ## K折交叉验证
 
@@ -87,7 +83,7 @@ K 折交叉验证的基本步骤如下：
 
 ## 模型优化失败原因
 
-![image-20251206160740918](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206160740918.png)
+![image-20251206160740918 =929x646](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206160740918.png)
 
 当梯度 ($\nabla J(\theta)$) 接近或等于零时，优化器会遇到以下两种主要类型的**临界点(critical point)**：
 
@@ -100,7 +96,7 @@ K 折交叉验证的基本步骤如下：
 
 ### 如何分辨
 
-![image-20251206162222264](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206162222264.png)
+![image-20251206162222264 =919x631](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206162222264.png)
 
 泰勒级数近似的核心思想是：在某个点a附近，可以用一个**多项式**来逼近一个复杂的函数。
 
@@ -120,13 +116,13 @@ K 折交叉验证的基本步骤如下：
 
 > 小 batch 会引入梯度噪声，这种噪声是一种“隐式正则化”，帮助模型找到对测试集更友好的平坦解（flat minima），因此泛化更好。
 
-![image-20251206185253805](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206185253805.png)
+![image-20251206185253805 =1319x789](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206185253805.png)
 
 ### 2. Momentum
 
 > Momentum = 梯度下降 + “惯性”
 
-![image-20251206185741458](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206185741458.png)
+![image-20251206185741458 =1366x974](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206185741458.png)
 
 把过去的方向也考虑进去，让更新更有惯性、更平滑。
 
@@ -138,9 +134,9 @@ K 折交叉验证的基本步骤如下：
 >
 > 学习率小 → 稳定但慢
 
-![image-20251206191316463](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206191316463.png)
+![image-20251206191316463 =1304x869](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206191316463.png)
 
-![](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206191949972.png)
+![ =1315x922](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206191949972.png)
 
 ### 1. 自动调节学习率(Root Mean Square)
 
@@ -156,7 +152,7 @@ K 折交叉验证的基本步骤如下：
 
 ### 2. 学习率调度(Learning Rate Scheduling)
 
-![image-20251206193250018](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206193250018.png)
+![image-20251206193250018 =1292x828](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206193250018.png)
 
 - Learning Rate Decay
 
@@ -171,11 +167,11 @@ K 折交叉验证的基本步骤如下：
   ✔ Transformer、中大型模型标配
   ✔ 防止训练初期 loss 爆炸
 
-![image-20251206193702587](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206193702587.png)
+![image-20251206193702587 =1334x531](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206193702587.png)
 
 ## 分类(Classification)
 
-![image-20251206194210996](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206194210996.png)
+![image-20251206194210996 =1341x932](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251206194210996.png)
 
 ### 1. Softmax
 

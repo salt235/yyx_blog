@@ -3,7 +3,6 @@ title: transformer
 createTime: 2025/12/29 20:20:56
 permalink: /notes/MachineLearning/w48llyos/
 ---
-# Transformer
 
 >  最早的transformer = encoder + decoder
 
@@ -57,7 +56,7 @@ LN 通过**抛弃对 Batch 维度的依赖**，完美解决了上述问题。
 
 ### Bert结构
 
-![早期的一个encoder结构](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767016854328.png)
+![早期的一个encoder结构 =781x577](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767016854328.png)
 
 上图其实就是Bert的结构，Bert本质上就是一个编码器。
 
@@ -79,14 +78,14 @@ BERT 就是一堆 **Transformer Encoder** 叠起来。每个 Encoder 层里有�
 
 ### Decoder的结构
 
-![decoder](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767949811153.png)
+![decoder =839x662](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767949811153.png)
 
 Transformer 的 Decoder 是一种用于序列生成的网络结构，  
 它通过“因果自注意力（Causal Self-Attention）”实现 autoregressive（自回归）建模。
 
   ### Masked Self-attention
 
-![Masked Self-attention](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767949111534.png)
+![Masked Self-attention =880x588](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767949111534.png)
 
 和Self-attention的区别是，$b_i$的生成之和$a_1$到$a_i$有关，不考虑后面的。
 
@@ -96,11 +95,11 @@ Transformer 的 Decoder 是一种用于序列生成的网络结构，
 
 ## Encoder和Decoder的连接
 
-![encoder和decoder的连接](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767950220351.png)
+![encoder和decoder的连接 =785x644](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767950220351.png)
 
  ### Cross attention
 
-![cross attention](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767950312059.png)
+![cross attention =879x643](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1767950312059.png)
 
 Cross-Attention 是Decoder 在生成当前 token 时，去“查询（Query）Encoder 输出”的机制。
 

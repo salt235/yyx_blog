@@ -4,8 +4,6 @@ createTime: 2026/07/16 16:23:53
 permalink: /notes/UAV/px4/pid-tuning.html
 ---
 
-# PID调参相关知识
-
 ## 滤波器
 
 无人机飞行过程中，很多传感器的数据容易受到**多种噪声干扰**，例如陀螺仪测到的角速度数据，有时候无人机明明只是平稳悬停，传感器输出可能仍然不停波动。
@@ -77,7 +75,7 @@ PX4 最多以多高的频率，把陀螺仪角速度数据发布给角速度控�
 
 ### 其他一些滤波参数
 
-![image-20260717145142877](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260717145142877.png)
+![image-20260717145142877 =705x404](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260717145142877.png)
 
 | 参数                 | 总结                                                         |
 | -------------------- | ------------------------------------------------------------ |
@@ -97,19 +95,19 @@ PX4 最多以多高的频率，把陀螺仪角速度数据发布给角速度控�
 
 ### 执行器控制 FFT
 
-Actuator Controls FFT 看 PID 输出给电机的“控制动作”。![image-20260717143610768](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260717143610768.png)
+Actuator Controls FFT 看 PID 输出给电机的“控制动作”。![image-20260717143610768 =1125x433](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260717143610768.png)
 
 ### 角速度 FFT
 
 Angular Velocity FFT 看 IMU 感受到的“飞机运动/振动”。
 
-![image-20260717143828672](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260717143828672.png)
+![image-20260717143828672 =1082x459](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260717143828672.png)
 
 ### 角速度功率谱密度时频图
 
 无人机在每个时间点，陀螺仪角速度信号中有哪些频率的振动，以及这些振动有多强。
 
-![cfdb6bb1-8556-4cba-a956-2fcb09b1222c](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/cfdb6bb1-8556-4cba-a956-2fcb09b1222c.png)
+![cfdb6bb1-8556-4cba-a956-2fcb09b1222c =1174x469](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/cfdb6bb1-8556-4cba-a956-2fcb09b1222c.png)
 
 从下到上可以看到三条频带。分别为：
 
@@ -121,7 +119,7 @@ Angular Velocity FFT 看 IMU 感受到的“飞机运动/振动”。
 
 下面这个是添加了两条陷波滤波的结果图：
 
-![f46a089609907c9576338cedfd203094](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/f46a089609907c9576338cedfd203094.png)
+![f46a089609907c9576338cedfd203094 =1100x471](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/f46a089609907c9576338cedfd203094.png)
 
 ## D项调节分析
 
@@ -133,7 +131,7 @@ D 抑制震荡 → P 提高响应速度 → I 消除长期误差 → FF 提高�
 
 ### 阶跃响应（Step Response）图
 
-![image-20260718133137016](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260718133137016.png)
+![image-20260718133137016 =1120x516](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260718133137016.png)
 
 对无人机横滚角速度（Roll Rate）输入一个阶跃指令，比如突然从0加到100，实际响应曲线是什么样。它主要用来判断 **角速度环（Rate Controller）的 PID 调得好不好**。
 
@@ -141,13 +139,13 @@ D 抑制震荡 → P 提高响应速度 → I 消除长期误差 → FF 提高�
 
 ### Roll角速度响应曲线
 
-![image-20260718134022633](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260718134022633.png)
+![image-20260718134022633 =1100x466](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260718134022633.png)
 
 明显过冲，需要降低D。
 
 ### Pitch角速度响应曲线
 
-![image-20260718134214614](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260718134214614.png)
+![image-20260718134214614 =1050x451](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260718134214614.png)
 
 同样降低D。
 

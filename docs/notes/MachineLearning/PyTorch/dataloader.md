@@ -4,7 +4,6 @@ createTime: 2026/09/26 00:00:00
 permalink: /notes/MachineLearning/pytorch/dataloader.html
 ---
 
-# PyTorch DataLoader
 DataLoader 提供了丰富的功能，下面介绍常用的功能，高阶功能等到具体项目中再进行分析。
 DataLoader 以 [Dataset](/notes/MachineLearning/pytorch/dataset.html) 提供的单个样本为输入，并按 batch 组织训练数据。
 - **dataset**：它是一个 Dataset 实例，要能实现从索引（indices/keys）到样本的映射。（即getitem函数）

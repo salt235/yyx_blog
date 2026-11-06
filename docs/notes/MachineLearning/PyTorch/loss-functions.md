@@ -4,7 +4,6 @@ createTime: 2026/09/29 00:00:00
 permalink: /notes/MachineLearning/pytorch/loss-functions.html
 ---
 
-# PyTorch 损失函数
 损失函数（loss function）是用来**衡量模型输出与真实标签之间的差异**。
 损失反向传播后得到的梯度，会由 [优化器](/notes/MachineLearning/pytorch/optimizers.html) 执行参数更新；分类结果的评估可参考 [模型评价指标](/notes/MachineLearning/pytorch/evaluation-metrics.html)。
 针对不同的任务有不同的损失函数，例如回归任务常用 MSE(Mean Square Error)，分类任务常用 CE（Cross Entropy），这是根据标签的特征来决定的。而不同的任务还可以对基础损失函数进行各式各样的改进，如 Focal Loss 针对困难样本的设计，GIoU 新增相交尺度的衡量方式，DIoU 新增重叠面积与中心点距离衡量等等。

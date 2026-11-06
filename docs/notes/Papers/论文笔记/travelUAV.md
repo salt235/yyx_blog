@@ -34,7 +34,7 @@ VLN的大多数研究都集中在地面上，而基于无人机的VLN仍然相�
 
 为了解决这些差异和相关挑战，我们提出了一个UAV仿真平台OpenUAV，一个面向目标的VLN数据集，一个新的基准无人机-需要帮助，以及一个UAV导航LLM，以创建一个更现实的UAV视觉语言导航框架，支持连续轨迹和复杂场景。
 
-![f1](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/f1.png)
+![f1 =1188x606](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/f1.png)
 *图1：提出了一个现实的无人机仿真平台和一个新的无人机-需要帮助基准*
 
 #### OpenUAV、UAV-Need-Help与UAV导航LLM
@@ -64,7 +64,7 @@ VLN研究提供了基础。
 
 #### 视觉语言导航数据集
 
-![t1](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/t1.png)
+![t1 =1086x309](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/t1.png)
 
 *表1：代表性VLN数据集之间的比较*
 
@@ -121,7 +121,7 @@ VLN研究提供了基础。
 
 作者基于 OpenUAV 平台构建了一个面向目标的真实无人机视觉-语言导航（UAV VLN）数据集，这是首个能够准确捕捉复杂飞行动力学的 UAV VLN 任务数据集。如图2所示。
 
-![f2](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/f2.png)
+![f2 =1167x606](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/f2.png)
 
 *图2：数据集构建和统计分析概述*
 
@@ -166,7 +166,7 @@ VLN研究提供了基础。
 
 #### 助理机制
 
-![f3](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/f3.png)
+![f3 =1179x468](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/f3.png)
 
 *图3：助理机制和无人机导航LLM框架*
 
@@ -217,7 +217,7 @@ VLN研究提供了基础。
 
 #### 定量结果
 
-![t2](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/t2.png)
+![t2 =1164x546](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/t2.png)
 
 *表2：不同助理水平的已见测试集结果，DA 指的是使用基于回溯采样的数据聚合方法训练的模型。*
 
@@ -237,7 +237,7 @@ VLN研究提供了基础。
 
 - **对未见情况的泛化能力**
 
-  ![t3](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/t3.png)
+  ![t3 =1176x426](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/t3.png)
 
   *表3：使用L1辅助的不同测试集的泛化能力，其中 UO 和 UM 分别代表未见物体测试集和未见地图测试集*
 
@@ -245,14 +245,14 @@ VLN研究提供了基础。
 
 - **性能可扩展性**
 
-  ![t4](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/t4.png)
+  ![t4 =435x162](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/t4.png)
 
   *表4：不同训练数据量下的性能可扩展性*
 
   表 4 报告了模型在不同训练数据量及 L1 助理条件下的表现。结果表明，随着训练数据量的增加，模型性能得到提升，说明更大规模且多样化的数据集有助于增强模型的理解和决策能力。
 #### 定性结果
 
-![f4](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/f4.png)
+![f4 =1170x447](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/f4.png)
 
 *图4：对象搜索结果的可视化*
 

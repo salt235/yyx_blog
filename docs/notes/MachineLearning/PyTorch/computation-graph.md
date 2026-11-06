@@ -4,7 +4,6 @@ createTime: 2026/09/25 00:00:00
 permalink: /notes/MachineLearning/pytorch/computation-graph.html
 ---
 
-# PyTorch 计算图
 这一节是[自动求导](/notes/MachineLearning/pytorch/autograd.html)的前置知识。
 计算图（Computational Graphs）是一种描述运算的“语言”，它由节点(Node)和边(Edge)构成。
 ~~**节点**表示数据，如标量，向量，矩阵，张量等~~
@@ -18,9 +17,9 @@ permalink: /notes/MachineLearning/pytorch/computation-graph.html
 >
 > y = a * b
 得到计算图如下：
-![image.png](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260925222238469.png)
+![image.png =522x586](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260925222238469.png)
 ## 计算图求导
-![image.png](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260925222357548.png)
+![image.png =1456x825](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260925222357548.png)
 我们发现，所有的偏微分计算所需要用到的数据都是基于w和x的，这里，w和x就称为**叶子结点**。
 ## 叶子结点
 张量有一个属性是 is_leaf, 就是用来指示一个张量是否为叶子结点的属性。

@@ -4,8 +4,6 @@ createTime: 2026/07/05 14:41:53
 permalink: /notes/UAV/ros1-px4/simulation-workflow.html
 ---
 
-# ROS1启动px4仿真流程
-
 前提是把MAVROS安装好，参考[官方的教程](https://docs.px4.io/main/en/ros/mavros_installation)，我没有用源码安装。
 
 ## 开第一个终端

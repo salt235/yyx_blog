@@ -1,10 +1,16 @@
-# AerialClaw 如何组织无人机任务
+---
+title: 'AerialClaw 如何组织无人机任务'
+createTime: 2026/10/09 20:23:19
+tags:
+  - 技术实践
+permalink: /blog/aerial-claw-task-organization.html
+---
 
 ## 1. 项目定位
 
 **AerialClaw** 是一个面向通用自主无人机系统的个性化AI智能体框架。系统提供标准化的原子动作技能库（起飞、导航、感知等），由大语言模型（LLM）在任务执行中实时感知环境、规划决策并组合调用这些技能——无需为每个任务预编写完整的飞行流程，同时赋予每架无人机独立的身份认知、任务记忆与技能进化能力。
 
-![AerialClaw Web控制界面](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/ui_overview.png)
+![AerialClaw Web控制界面 =3822x1980](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/ui_overview.png)
 
 - **多视角视频流** — 前/后/左/右/下五路摄像头实时画面
 - **激光雷达可视化** — 3D LiDAR 点云数据的多层渲染显示
@@ -22,7 +28,7 @@
 - **Adapter Layer：** 把上层技能调用转换成 PX4、AirSim、ROS2 或自定义协议所需的操作。
 - **Device Layer：** 底部列出 PX4 SITL/Gazebo、AirSim/UE5、真实无人机等可能的执行环境。
 
-![AerialClaw 系统架构](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/architecture-20261009203224079.png)
+![AerialClaw 系统架构 =3338x1970](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/architecture-20261009203224079.png)
 
 ## 3. 技能体系：硬技能和软技能
 
@@ -62,7 +68,7 @@
 下面是项目方展示的 **AirSim 城市场景仿真**。无人机通过相机和模拟 LiDAR 获取环境信息，由大模型结合任务与当前状态选择技能，再通过 AirSim API 执行。
 
 <div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/airsim_flight.gif" width="900">
+  <img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/airsim_flight.gif" width="900" height="527" loading="lazy">
 </div>
 
 | 组件              | 技术选型                                         |

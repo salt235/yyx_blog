@@ -4,7 +4,6 @@ createTime: 2026/09/27 00:00:00
 permalink: /notes/MachineLearning/pytorch/common-layers.html
 ---
 
-# PyTorch 常用网络层
 常用网络层的概念见：[CNN 与 ResNet](/notes/MachineLearning/528u1pz0/)。
 ## Convolutional Layers
 ```python
@@ -60,7 +59,7 @@ Linear Layers 包含4个层分别是 nn.Identity，nn.Linear， nn.Bilinear， n
 torch.nn.BatchNorm2d(num_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True, device=None, dtype=None)
 ```
 BatchNorm 会对输入进行减均值、除以标准差、乘以γ、加β的操作。
-![image.png](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260928151843410.png)
+![image.png =315x96](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260928151843410.png)
 ## Dropout Layers
 Dropout 的主要作用是：防止神经网络过拟合，提高泛化能力。训练时随机将部分神经元输出置 0，减少神经元之间的依赖，缓解过拟合；测试时关闭。
  Dropout使用注意事项：
@@ -88,7 +87,7 @@ nn.SELU()
 - 非 softmx 的，如sigmoid、tanh、ReLU、PReLU等
 -  softmax 系列
 对于softmax需要简单讲一讲，softmax的作用是将一个向量转换为一个概率分布的形式，以便于实现loss的计算，计算过程如下图所示：
-![Softmax 计算示意图](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260928154535131.png)
+![Softmax 计算示意图 =304x88](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/20260928154535131.png)
 看着一头雾水，其实很好理解。一个概率向量它的要求至少有这两个
 1. 非负
 2. 求和等于1

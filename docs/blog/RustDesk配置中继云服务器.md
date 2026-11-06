@@ -2,9 +2,7 @@
 title: RustDesk配置中继云服务器
 createTime: 2026/04/14 13:33:00
 tags:
-  - RustDesk
-  - 远程桌面
-  - 自建服务
+  - 技术实践
 ---
 
 

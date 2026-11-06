@@ -4,7 +4,6 @@ createTime: 2026/09/26 00:00:00
 permalink: /notes/MachineLearning/pytorch/transforms.html
 ---
 
-# PyTorch 图像变换 transforms
 transforms 是广泛使用的图像变换库，包含二十多种基础方法以及多种组合功能，通常可以用 Compose 把各方法串联在一起使用。大多数的transforms类都有对应的 functional transforms ，可供用户自定义调整。transforms 提供的主要是 PIL 格式和 Tensor 的变换，并且对于图像的通道也做了规定，默认情况下一个 batch 的数据是 (B, C, H, W)  形状的张量。
 图像变换通常在 [Dataset](/notes/MachineLearning/pytorch/dataset.html) 中调用，再由 [DataLoader](/notes/MachineLearning/pytorch/dataloader.html) 组装成 batch。
 ## Compose

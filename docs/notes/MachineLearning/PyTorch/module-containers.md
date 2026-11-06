@@ -4,7 +4,6 @@ createTime: 2026/09/27 00:00:00
 permalink: /notes/MachineLearning/pytorch/module-containers.html
 ---
 
-# PyTorch Module 与容器
 在深度学习模型里面，有一些网络层需要放在一起使用，如 conv + bn + relu 的组合。Module的容器是将一组操作捆绑在一起的工具，在 pytorch 官方文档中把 Module 也定义为 Containers，或许是因为“Modules can also contain other Modules”。
 卷积、池化和归一化等可组合的层见 [常用网络层](/notes/MachineLearning/pytorch/common-layers.html)；模型参数的保存和加载见 [Module APIs](/notes/MachineLearning/pytorch/module-apis.html)。
 ## forward

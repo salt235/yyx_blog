@@ -1,9 +1,8 @@
 ---
-title: java-set
+title: "Java集合框架体系"
 createTime: 2025/12/27 14:44:18
 permalink: /notes/LanguageLearning/java/collections.html
 ---
-# Java集合框架体系
 
 > **Java 集合可分为 Collection 和 Map 两大体系**
 

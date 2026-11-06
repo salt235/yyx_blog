@@ -63,7 +63,7 @@ $$ π(⋅∣ℓ,I_t)→m_t∈\mathbb{R}^3 $$
 - 二维到三维动作转换
 - 闭环控制与动态重规划
 
-![概览](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260412174551727.png)
+![概览 =829x214](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260412174551727.png)
 
 ### 1. 基于 VLM 的避障动作规划
 
@@ -91,7 +91,7 @@ d_{\text{adj}} = \max \left( d_{\min},\; s \times \left( \frac{d_{\text{VLM}}}{L
 $$
 其中，$s$ 是全局缩放因子，$p$ 控制缩放曲线的非线性程度，$d_{\min}$ 用于设定步长的下界以保证安全性。在补充材料中，作者说一般的步长范围在0.1m到10m。
 
-<img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413151822360.png" alt="vlm驱动飞行回路的控制几何细节" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413151822360.png" alt="vlm驱动飞行回路的控制几何细节" style="zoom:67%;" width="1250" height="314" loading="lazy" />
 
 解释一下上图的流程：
 
@@ -143,11 +143,11 @@ $$
 
 ### 4. 实验评估
 
-<img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413163051514.png" alt="实验评估" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413163051514.png" alt="实验评估" style="zoom:50%;" width="1058" height="627" loading="lazy" />
 
 作者的方法从仿真和实机上都显著优于 PIVOT 和 TypeFly（其性能受限于预定义技能库）。特别地，在需要空间推理与规划的复杂场景中，作者的方法表现尤为突出。
 
-<img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413164518956.png" alt="时间差别" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413164518956.png" alt="时间差别" style="zoom:50%;" width="737" height="700" loading="lazy" />
 
 作者评估了5个具有代表性的真实世界任务，不仅完成了SPF所有两个基线都失败的任务，而且完成时间也很优秀。
 
@@ -161,19 +161,19 @@ $$
 
 #### 不同 VLM 的泛化能力
 
-![不同VLM](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413164953304.png)
+![不同VLM =648x238](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413164953304.png)
 
 作者的方法在不同能力水平的视觉语言模型上具有良好的泛化能力。
 
 #### 步长消融
 
-![步长消融](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413165212067.png)
+![步长消融 =500x204](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413165212067.png)
 
 作者提出的自适应距离缩放显著提升了飞行效率。
 
 #### VLM 集成优势
 
-![vlm集成优势](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413165430432.png)
+![vlm集成优势 =767x102](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/image-20260413165430432.png)
 
 作者的方法能够通过 VLM 在单次推理中直接生成目标边界框，从而实现零样本泛化和低延迟。
 

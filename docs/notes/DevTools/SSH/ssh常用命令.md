@@ -4,8 +4,6 @@ createTime: 2026/07/03 22:41:37
 permalink: /notes/DevTools/ssh/commands.html
 ---
 
-# ssh常用命令
-
 > SSH（Secure Shell）可以理解成在另一台电脑上打开一个终端。
 
 ## 登录

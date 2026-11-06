@@ -4,8 +4,6 @@ createTime: 2026/07/09 15:33:22
 permalink: /notes/Projects/raspberry-pi/tft-gif-display.html
 ---
 
-# 树莓派+TFT小屏播放gif
-
 本来是想买个 ESP32 开发板连一个 TFT 小屏当个桌面 gif 播放器装饰的，结果买回来发现那个淘宝小店的开发板有问题，一直烧录不进去，无奈退货。转念一想，我可以直接用树莓派接小屏啊，于是花一会就弄出来了，还蛮简单的。
 
 ## 1. 引脚连接（右侧为派）
@@ -195,7 +193,7 @@ sudo systemctl start tft-gif.service # 立即启动
 
 ## 5. 成功
 
-<img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/5f7c97666d3758740e3a5f1804424882.png" alt="5f7c97666d3758740e3a5f1804424882" style="zoom:20%;" />
+<img src="https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/5f7c97666d3758740e3a5f1804424882.png" alt="5f7c97666d3758740e3a5f1804424882" style="zoom:20%;" width="2776" height="2736" loading="lazy" />
 
 ## 6. 后续计划
 

@@ -4,8 +4,6 @@ createTime: 2026/08/26 16:07:29
 permalink: /notes/DevTools/git/commit-conventions.html
 ---
 
-# Git Commit 的规范写法
-
 ## commit message 格式
 
 ```

@@ -4,8 +4,6 @@ createTime: 2026/07/02 19:54:20
 permalink: /notes/UAV/px4/minimal-app.html
 ---
 
-# PX4最小应用程序
-
 PX4 应用的“构建”，简单说就是：**把你写的 PX4 应用代码，编译、链接，并打包进 PX4 固件或仿真程序里，让 PX4 能识别并运行它。**
 
 整体的流程：

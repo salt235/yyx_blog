@@ -31,19 +31,19 @@ permalink: /notes/MachineLearning/1unm9yzt/
 
 - 由输入生成$Q,K,V$，通过将每个向量乘上$k^i,q^i,v_i$，得到$Q,K,V$矩阵。其中可以吧所有的向量$a$合并到一起变成一个大矩阵$I$，把所有的$k^i,q^i,v_i$合并变成大矩阵$W^q,Q^k,W^v$，用$I$分别乘，最终得到$Q,K,V$。
 
-![image-20251215150833091](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215150833091.png)
+![image-20251215150833091 =906x581](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215150833091.png)
 
 - 用$A=K^TQ$，来计算注意力分数，然后可以根据一个激活函数，把分数矩阵$A$变为$A^,$。
 
-![image-20251215152153273](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215152153273.png)
+![image-20251215152153273 =917x682](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215152153273.png)
 
 - $O=VA^,$，用 Attention 权重加权 Value，最终的矩阵$O$表示输出的新向量$b^i$的集合。
 
-![image-20251215152235772](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215152235772.png)
+![image-20251215152235772 =914x694](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215152235772.png)
 
 - 整个流程如下，整个过程只有红框的三个矩阵是未知的，需要训练。
 
-![image-20251215153949949](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215153949949.png)
+![image-20251215153949949 =882x675](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215153949949.png)
 
 ### 3. Multi-head Self-attention
 

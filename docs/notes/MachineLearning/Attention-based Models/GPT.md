@@ -3,7 +3,6 @@ title: GPT
 createTime: 2026/01/27 14:47:05
 permalink: /notes/MachineLearning/6um3y9en/
 ---
-# GPT
 
 > GPT 是一个 decoder-only 的 Transformer，自回归语言模型，用来“生成下一个 token”。
 
@@ -14,4 +13,4 @@ permalink: /notes/MachineLearning/6um3y9en/
 
 ## 模型
 
-![有点像decoder](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769496138099.png)
+![有点像decoder =622x499](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/img/QQ_1769496138099.png)

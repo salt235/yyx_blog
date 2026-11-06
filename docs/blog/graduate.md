@@ -2,13 +2,11 @@
 title: 毕业祭
 createTime: 2026/06/26 00:19:25
 tags:
-  - 毕业
-  - 大学生活
-  - 个人成长
+  - 生活
 sticky: 2
 ---
 
-![Misaki](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/Misaki.jpeg)
+![Misaki =4032x3024](https://cdn.jsdelivr.net/gh/salt235/tuchuang/macImg/Misaki.jpeg)
 
 > 毕业了，给misaki娃也穿上了学士服
 

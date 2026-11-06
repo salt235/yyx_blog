@@ -4,8 +4,6 @@ createTime: 2026/07/03 15:21:34
 permalink: /notes/DevTools/git/basics.html
 ---
 
-# git 补课
-
 ## 第一次把本地项目创建为仓库
 
 ```bash
@@ -264,7 +262,7 @@ git pull --rebase
 
 具体区别图示：
 
-![image-20260703143608269](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260703143608269.png)
+![image-20260703143608269 =1280x720](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/image-20260703143608269.png)
 
 rebase情况下，三个绿色球的提交历史会被更改，生成一组 **新的 commit**。
 

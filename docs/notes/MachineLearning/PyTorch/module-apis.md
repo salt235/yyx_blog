@@ -4,7 +4,6 @@ createTime: 2026/09/28 00:00:00
 permalink: /notes/MachineLearning/pytorch/module-apis.html
 ---
 
-# PyTorch Module APIs
 ## 设置模型存放在 cpu/gpu
 to() 方法的妙用：根据当前平台自动选择 CUDA、MPS 或 CPU。to(device) 比直接调用 cuda() 更适合跨平台代码。
 ```python

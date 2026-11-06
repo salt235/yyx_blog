@@ -3,7 +3,6 @@ title: cnn
 createTime: 2025/12/27 14:44:18
 permalink: /notes/MachineLearning/528u1pz0/
 ---
-# CNN
 
 > CNN（Convolutional Neural Network）是一种 **专门处理图像** 的神经网络。
 >
@@ -14,7 +13,7 @@ permalink: /notes/MachineLearning/528u1pz0/
 
 > 这是 CNN 的核心。它使用卷积核（Kernel）在图像上滑动，提取局部特征。
 
-![image-20251207153028839](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251207153028839.png)
+![image-20251207153028839 =1246x854](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251207153028839.png)
 
 ### 1. 感受野（Receptive field）和卷积核大小（Kernel Size） 
 
@@ -76,13 +75,13 @@ d. 退化问题：层数深没有层数浅的网络效果好
 >
 > 最后：输出 = x + F(x)
 
-![image-20251215171352749](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215171352749.png)
+![image-20251215171352749 =983x559](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215171352749.png)
 
 左边针对与网络层数较少的的网络所使用的的残差结构（34），右边主要针对与网络层数较多的网络所使用的结构（50/101/152）。**主分支与侧分支的输出矩阵特征shape必须相同（高宽通道数相同）。**右边在输入和输出都加上了1X1的卷积层，降维再升维（256→64→256），保证shape相同的情况下**减少参数。**使用的残差结构越多，减少的参数就越多。
 
 ### 3.实线残差结构和虚线残差结构
 
-![image-20251215171721472](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215171721472.png)
+![image-20251215171721472 =987x550](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215171721472.png)
 
 - 实线残差结构：输入输出shape相同，可以直接相加。
 
@@ -94,7 +93,7 @@ d. 退化问题：层数深没有层数浅的网络效果好
 >  每个 stage = 多个残差块堆叠
 >  stage 之间：降分辨率、升通道
 
-![image-20251215172035472](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215172035472.png)
+![image-20251215172035472 =790x320](https://cdn.jsdelivr.net/gh/salt235/tuchuang@main/macImg/image-20251215172035472.png)
 
 - 对于浅层网络（18 34）：
 

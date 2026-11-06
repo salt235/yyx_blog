@@ -4,8 +4,6 @@ createTime: 2026/07/02 19:54:20
 permalink: /notes/UAV/px4/wsl-setup.html
 ---
 
-# wsl部署px4环境
-
 ## 1. BIOS中开启虚拟化支持，并安装wsl
 
 ```powershell

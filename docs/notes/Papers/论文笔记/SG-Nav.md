@@ -91,11 +91,11 @@ permalink: /notes/Papers/z6ysu7bq/
 
 > 创新点 = 3D场景图 + 分层提示 LLM + 可解释决策
 
-![f1](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821163031414.png)
+![f1 =1140x426](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821163031414.png)
 
 图1：不同于以往的零射击目标导航方法直接用附近物体类别的文本提示 LLM，作者构建了一个分层的三维场景图来表示观察到的环境，并提示 LLM 充分利用图中的结构信息。 
 
-![f2](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821163619441.png)
+![f2 =1164x390](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821163619441.png)
 
 图2：SG-Nav的流程。作者在线构建了一个分层的 3D 场景图以及占据图。在每一步中，将场景图划分为若干子图，每个子图都会通过分层的“思维链”提示（hierarchical chain-of-thought）输入到大语言模型（LLM），以便对场景上下文进行结构化理解。作者将每个子图的概率分数插值到前沿点（frontiers），并选择得分最高的前沿点进行探索。通过总结 LLM 的推理过程，这一决策也是可解释的。利用场景图表示，作者进一步设计了一个“再感知”（re-perception）机制，帮助智能体通过持续的可信度判断放弃错误的目标对象。
 
@@ -162,7 +162,7 @@ SG-Nav 也是一个基于大语言模型的零样本框架。但不同的是，�
 
 作者进一步对密集连接的边进行剪枝，以使三维场景图更加精确。新生成的关系分为两类：**长距离关系 **和 **短距离关系**。划分依据是 RGB-D 图像中是否同时包含两个相连的对象。如果同时包含两个对象，则该边为短距离边。对于这种情况，我们可以将 RGB 图像输入到像 LLaVA 等视觉语言模型（VLM）中，询问该关系是否存在，不存在的关系将被剪枝。否则，该边为长距离边。作者设计了两个标准来验证长距离边的合理性：（1）连接两个对象的线不被阻挡且与房间的墙壁平行；（2）这两个对象节点属于同一个房间节点。只有同时满足这两个标准的边才会被保留。
 
-![f3](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821163847080.png)
+![f3 =567x483](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821163847080.png)
 
 图3：边的增量生成。作者通过高效地提示大语言模型（LLM），将新注册的节点（紫色）与所有其他节点进行密集连接。我们将边分为长边和短边，并通过不同的策略剪枝信息量较低的边。
 
@@ -208,7 +208,7 @@ $N_{stop}<N_{max},\ where\ N_{stop}=N,\ s.t.\ \sum_{i=1}^{N-1}S_i<S_{thres}\le\s
 
 作者在 Matterport3D，HM3D，RoboTHOR 上开展实验，取得了最先进的零样本性能，结果如下：
 
-![t1](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821164213780.png)
+![t1 =1176x540](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821164213780.png)
 
 表1：在 MP3D、HM3D 和 RoboTHOR 上的目标对象导航结果。作者比较了不同设置下各最先进方法的成功率（SR）和路径效率（SPL）。
 
@@ -247,25 +247,25 @@ $SPL=\frac{最优路径长度}{实际路径长度}$
 >
 > 答：消融实验就是**把模型中的某些模块/组件有意识地“去掉”或“替换”**，然后观察性能的变化，从而判断这些模块对最终效果的作用大小。
 
-![t2](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821164353927.png)
+![t2 =1161x213](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821164353927.png)
 
 表2：三维场景图（SG）和再感知机制（RP）的效果。
 
 
 
-![t34](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821165501015.png)
+![t34 =944x179](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821165501015.png)
 
 表3和表4：表3是房间节点和组节点对实验的影响，表4是不同类型边对实验的影响。
 
 
 
-![t45](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821165412284.png)
+![t45 =989x287](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821165412284.png)
 
 图4和图5：图4是 MP3D 上的每个类别SR，图5是连接 n 条边的时间开销。
 
 
 
-![t5](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821165250169.png)
+![t5 =446x177](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821165250169.png)
 
 表5：CoT提示对MP3D数据集的影响。
 
@@ -281,7 +281,7 @@ $SPL=\frac{最优路径长度}{实际路径长度}$
 
 #### 定性分析
 
-![f6](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821165721801.png)
+![f6 =947x806](https://cdn.jsdelivr.net/gh/salt235/tuchuang/img/20250821165721801.png)
 
 图6：导航过程可视化
 

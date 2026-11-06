@@ -4,8 +4,6 @@ createTime: 2026/07/03 18:53:18
 permalink: /notes/UAV/px4/ubuntu20-gazebo-classic.html
 ---
 
-# Ubuntu 20.04 配置 PX4 + Gazebo Classic 踩坑记录
-
 ## 1. 环境选择
 
 本次环境为：

@@ -4,7 +4,6 @@ createTime: 2026/09/16 00:00:00
 permalink: /notes/UAV/px4/tuning/part-3-rate-pid.html
 ---
 
-# PX4 调参 Part 3：Rate PID 调参
 > 来源：[PX4 Ultimate Tuning Guide Part 3 The Rate PID Controller](https://www.youtube.com/watch?v=8nWW17ZDOYQ&t=152s)（Chris Rosser）
 > 前置：[PX4 调参 Part 2 陀螺仪滤波流程总结](/notes/UAV/px4/tuning/part-2-gyro-filtering.html)（滤波器没调好不要开始 PID）
 > 相关：[PX4 滤波与 PID 调参](/notes/UAV/px4/pid-tuning.html)、[PX4 多旋翼四个控制环](/notes/UAV/px4/control-loops.html)
