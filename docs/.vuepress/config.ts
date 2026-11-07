@@ -18,10 +18,6 @@ export default defineUserConfig({
     // 配置站点图标
     // 如果把图标放在 docs/.vuepress/public 下，发布时访问路径为 `/plume.png`
     ['link', { rel: 'icon', type: 'image/png', href: '/yuzu.png' }],
-    // 引入霞鹜文楷字体 CDN
-    ['link', { rel: 'preconnect', href: 'https://cdn.jsdelivr.net', crossorigin: '' }],
-    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css' }],
-    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/lxgw-wenkai-mono-webfont@1.7.0/style.css' }],
   ],
 
   bundler: viteBundler(),

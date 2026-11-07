@@ -75,7 +75,7 @@ defineProps<{
   --cover-divider: rgb(255 255 255 / 22%);
   --cover-button-hover: #d9d4de;
   --cover-button-border: rgb(217 212 222 / 35%);
-  --cover-ui-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --cover-ui-font: var(--vp-font-family-base);
 
   position: relative;
   display: flex;
