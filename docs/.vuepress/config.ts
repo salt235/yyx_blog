@@ -11,7 +11,7 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export default defineUserConfig({
   base: '/', // 站点根路径
   lang: 'zh-CN',
-  title: 'yyx_blog',
+  title: 'yyx235',
   description: 'my blog',
 
   head: [

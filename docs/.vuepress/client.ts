@@ -7,9 +7,11 @@ import { defineClientConfig } from 'vuepress/client'
 // import CustomComponent from './theme/components/Custom.vue'
 
 import './theme/styles/custom.css' // your custom styles
+import HomeCover from './theme/components/HomeCover.vue'
 
 export default defineClientConfig({
   enhance({ app }) {
+    app.component('HomeCover', HomeCover)
     // built-in components
     // app.component('RepoCard', RepoCard)
     // app.component('NpmBadge', NpmBadge)
