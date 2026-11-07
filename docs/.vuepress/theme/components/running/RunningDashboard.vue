@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { withBase } from 'vuepress/client'
+import RunningActivityDetail from './RunningActivityDetail.vue'
+import type { ActivitySplit as Split } from './detail-types'
 
-interface Split {
-  index: number; distanceKm: number; durationSeconds: number; paceSeconds: number
-  heartRate: number | null; cadence: number | null
-}
 interface Activity {
   id: string; date: string; name: string; sportType: number; location: string
   distanceKm: number; durationSeconds: number; paceSeconds: number
@@ -21,11 +19,11 @@ const data = ref<Dataset | null>(null)
 const loading = ref(true)
 const error = ref('')
 const period = ref('all')
-const sport = ref('all')
 const day = ref('')
 const page = ref(1)
 const selectedId = ref('')
 const calendarMonth = ref('')
+const monthListElement = ref<HTMLElement | null>(null)
 const detailElement = ref<HTMLElement | null>(null)
 const pageSize = 8
 
@@ -43,6 +41,8 @@ async function load() {
   } catch {
     error.value = '暂时无法读取跑步记录，请稍后重试。'
   } finally { loading.value = false }
+  await nextTick()
+  if (monthListElement.value) monthListElement.value.scrollLeft = monthListElement.value.scrollWidth
 }
 onMounted(load)
 
@@ -59,7 +59,7 @@ const months = computed(() => {
   }
   return result.reverse()
 })
-const scope = computed(() => activities.value.filter(a => (period.value === 'all' || a.date.startsWith(period.value)) && (sport.value === 'all' || a.sportType === Number(sport.value))))
+const scope = computed(() => activities.value.filter(a => period.value === 'all' || a.date.startsWith(period.value)))
 const distance = computed(() => scope.value.reduce((sum, a) => sum + a.distanceKm, 0))
 const duration = computed(() => scope.value.reduce((sum, a) => sum + a.durationSeconds, 0))
 const runningDays = computed(() => new Set(scope.value.map(a => a.date)).size)
@@ -69,7 +69,7 @@ const visible = computed(() => filtered.value.slice((page.value - 1) * pageSize,
 const selected = computed(() => filtered.value.find(a => a.id === selectedId.value) ?? null)
 const dayTotals = computed(() => {
   const totals = new Map<string, number>()
-  for (const a of activities.value.filter(a => sport.value === 'all' || a.sportType === Number(sport.value))) totals.set(a.date, (totals.get(a.date) ?? 0) + a.distanceKm)
+  for (const a of activities.value) totals.set(a.date, (totals.get(a.date) ?? 0) + a.distanceKm)
   return totals
 })
 const calendar = computed(() => {
@@ -85,29 +85,52 @@ const calendar = computed(() => {
       covered: key >= data.value!.coverage.start && key <= data.value!.coverage.end }
   })
 })
-const monthly = computed(() => {
-  const start = period.value === 'all' ? 0 : months.value.indexOf(period.value)
-  return months.value.slice(start, start + 4).reverse().map(month => ({
-    month, km: activities.value.filter(a => a.date.startsWith(month) && (sport.value === 'all' || a.sportType === Number(sport.value))).reduce((sum, a) => sum + a.distanceKm, 0),
-  }))
-})
+const monthly = computed(() => [...months.value].reverse().map(month => ({
+  month, km: activities.value.filter(a => a.date.startsWith(month)).reduce((sum, a) => sum + a.distanceKm, 0),
+})))
 const maxMonth = computed(() => Math.max(1, ...monthly.value.map(m => m.km)))
-const calendarIndex = computed(() => months.value.indexOf(calendarMonth.value))
-const maxPace = computed(() => Math.max(1, ...(selected.value?.splits ?? []).map(s => s.paceSeconds)))
-const selectedTitle = computed(() => selected.value ? `${selected.value.date.slice(5).replace('-', ' / ')} · ${selected.value.name}` : '选择一次跑步')
-const splitsNote = computed(() => {
-  if (!selected.value?.splits.length) return ''
-  const total = selected.value.splits.reduce((sum, split) => sum + split.distanceKm, 0)
-  return Math.abs(total - selected.value.distanceKm) > Math.max(0.03, selected.value.distanceKm * 0.005)
-    ? `COROS 总距离为 ${km(selected.value.distanceKm)} km，原始分段累计 ${km(total)} km。此处保留原始分段，不按总距离缩放。` : ''
+const monthlyAxis = computed(() => {
+  const target = maxMonth.value / 5
+  const magnitude = 10 ** Math.floor(Math.log10(target))
+  const step = [1, 2, 5, 10].map(n => n * magnitude).find(n => n >= target)!
+  const intervals = Math.ceil(maxMonth.value / step)
+  return {
+    max: intervals * step,
+    ticks: Array.from({ length: intervals + 1 }, (_, i) => Number((i * step).toFixed(2))).reverse(),
+  }
 })
+const calendarIndex = computed(() => months.value.indexOf(calendarMonth.value))
+const selectedTitle = computed(() => selected.value ? `${selected.value.date.slice(5).replace('-', ' / ')} · ${selected.value.name}` : '选择一次跑步')
 
-watch([period, sport], () => { day.value = ''; page.value = 1 })
+watch(period, () => { day.value = ''; page.value = 1 })
 watch(filtered, records => {
   page.value = Math.min(page.value, Math.max(1, Math.ceil(records.length / pageSize)))
   if (!records.some(a => a.id === selectedId.value)) selectedId.value = records[0]?.id ?? ''
 })
-watch(period, value => { if (value !== 'all') calendarMonth.value = value })
+watch(period, async value => {
+  if (value === 'all') return
+  calendarMonth.value = value
+  await nextTick()
+  const list = monthListElement.value
+  const row = list?.querySelector<HTMLElement>(`[data-month="${value}"]`)
+  if (!list || !row) return
+  const offset = row.getBoundingClientRect().left - list.getBoundingClientRect().left
+  if (offset < 0 || offset + row.offsetWidth > list.clientWidth) {
+    list.scrollLeft += offset - (list.clientWidth - row.offsetWidth) / 2
+  }
+})
+
+function scrollMonths(event: WheelEvent) {
+  const list = monthListElement.value
+  if (!list || event.ctrlKey || event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
+  const unit = event.deltaMode === 1 ? 24 : event.deltaMode === 2 ? list.clientWidth : 1
+  // The chart opens at the latest month on the right; wheel down reveals history.
+  const next = Math.max(0, Math.min(list.scrollWidth - list.clientWidth, list.scrollLeft - event.deltaY * unit))
+  if (next !== list.scrollLeft) {
+    event.preventDefault()
+    list.scrollLeft = next
+  }
+}
 
 function pace(value: number | null | undefined) {
   if (!value || !Number.isFinite(value)) return '—'
@@ -137,9 +160,8 @@ async function select(activity: Activity) {
   <main class="runner" aria-label="yyx 的跑步记录">
     <header class="runner-heading">
       <div>
-        <p class="runner-kicker"><span class="runner-dot" /> YYX / RUNNING LOG</p>
-        <h1>跑过的每一天<span>。</span></h1>
-        <p class="runner-intro">中长跑爱好者。把日常的积累，留在这里。</p>
+        <h1>我的跑步训练记录</h1>
+        <p class="runner-intro">人生就像是一场马拉松，你可以不用跑得多快，但至少摇起来。</p>
       </div>
       <div v-if="latest" class="runner-latest">
         <span>最近一次 <b>{{ latest.date.slice(5).replace('-', ' / ') }}</b></span>
@@ -151,14 +173,6 @@ async function select(activity: Activity) {
     <div v-if="loading" class="runner-state" role="status">正在读取跑步记录…</div>
     <div v-else-if="error" class="runner-state" role="alert"><p>{{ error }}</p><button class="runner-button" @click="load">重新加载</button></div>
     <template v-else-if="data">
-      <div class="runner-toolbar">
-        <div class="runner-filters">
-          <label>时间<select v-model="period" aria-label="时间"><option value="all">已同步的全部记录</option><option v-for="month in months" :key="month" :value="month">{{ monthLabel(month) }}</option></select></label>
-          <label>类型<select v-model="sport" aria-label="类型"><option value="all">全部跑步</option><option value="100">户外跑</option><option value="101">室内跑</option><option value="102">越野跑</option><option value="103">操场跑</option></select></label>
-        </div>
-        <span class="runner-coverage">已同步 {{ data.coverage.start.replaceAll('-', '.') }} — {{ data.coverage.end.replaceAll('-', '.') }}</span>
-      </div>
-
       <section class="runner-stats" aria-label="所选范围统计">
         <div><span>累计距离</span><p>{{ km(distance) }} <small>km</small></p></div>
         <div><span>跑步次数</span><p>{{ scope.length }} <small>次</small></p></div>
@@ -168,15 +182,23 @@ async function select(activity: Activity) {
 
       <section class="runner-overview">
         <div class="runner-panel runner-volume">
-          <div class="runner-panel-heading"><h2>月度跑量</h2><span>{{ period === 'all' ? '近 4 个月' : '截至所选月份的 4 个月' }}</span></div>
-          <div class="runner-months">
-            <button v-for="month in monthly" :key="month.month" class="runner-month" :class="{ active: period === month.month }" :aria-pressed="period === month.month" :aria-label="`${monthLabel(month.month)}，${km(month.km)} 公里，筛选该月`" @click="period = period === month.month ? 'all' : month.month">
-              <span class="runner-month-name">{{ month.month.slice(2).replace('-', ' / ') }}</span>
-              <span class="runner-bar-track"><span :style="{ width: `${month.km / maxMonth * 100}%` }" /></span>
-              <span class="runner-month-distance">{{ month.km.toFixed(1) }}<small> km</small></span>
-            </button>
+          <div class="runner-panel-heading"><h2>月度跑量</h2><span>全部月份</span></div>
+          <div class="runner-month-chart">
+            <div class="runner-month-axis" aria-hidden="true">
+              <span class="runner-month-unit">km</span>
+              <div class="runner-month-scale"><span v-for="tick in monthlyAxis.ticks" :key="tick" :style="{ top: `${(1 - tick / monthlyAxis.max) * 100}%` }">{{ tick }}</span></div>
+            </div>
+            <div ref="monthListElement" class="runner-months" tabindex="0" role="region" aria-label="月度跑量，纵轴单位公里，可左右滚动浏览月份" @wheel="scrollMonths">
+              <div class="runner-month-plot">
+                <div class="runner-month-grid" aria-hidden="true"><i v-for="tick in monthlyAxis.ticks" :key="tick" :style="{ top: `${(1 - tick / monthlyAxis.max) * 100}%` }" /></div>
+                <button v-for="month in monthly" :key="month.month" :data-month="month.month" class="runner-month" :class="{ active: period === month.month }" :aria-pressed="period === month.month" :aria-label="`${monthLabel(month.month)}，${km(month.km)} 公里，筛选该月`" @click="period = period === month.month ? 'all' : month.month">
+                  <span class="runner-month-track"><span class="runner-month-column" :style="{ height: `${month.km / monthlyAxis.max * 100}%` }"><span class="runner-month-distance">{{ month.km.toFixed(1) }}</span></span></span>
+                  <span class="runner-month-name">{{ month.month.slice(2).replace('-', ' / ') }}</span>
+                </button>
+              </div>
+            </div>
           </div>
-          <p class="runner-footnote">仅统计已同步范围，点击月份查看记录。</p>
+          <p class="runner-footnote">用滚轮或左右滑动查看月份，点击柱形查看记录。</p>
         </div>
         <div class="runner-panel runner-calendar">
           <div class="runner-panel-heading"><h2>训练日历</h2><div class="runner-calendar-nav"><button aria-label="上一个月" :disabled="calendarIndex >= months.length - 1" @click="calendarMonth = months[calendarIndex + 1]">‹</button><span>{{ monthLabel(calendarMonth) }}</span><button aria-label="下一个月" :disabled="calendarIndex <= 0" @click="calendarMonth = months[calendarIndex - 1]">›</button></div></div>
@@ -188,8 +210,8 @@ async function select(activity: Activity) {
       </section>
 
       <section class="runner-log">
-        <div class="runner-records">
-          <div class="runner-panel-heading runner-records-heading"><h2>每一次出发</h2><span>{{ filtered.length }} 次跑步</span></div>
+        <div class="runner-panel runner-records">
+          <div class="runner-panel-heading runner-records-heading"><h2>训练详情</h2><span>{{ filtered.length }} 次跑步</span></div>
           <button v-if="day" class="runner-day-filter" @click="day = ''">{{ day }} <span>清除筛选 ×</span></button>
           <div v-if="!filtered.length" class="runner-empty">这个范围内还没有跑步记录。</div>
           <div v-else class="runner-record-list">
@@ -202,6 +224,7 @@ async function select(activity: Activity) {
             </button>
           </div>
           <nav v-if="filtered.length" class="runner-pagination" aria-label="跑步记录分页"><button :disabled="page <= 1" @click="page--">← 上一页</button><span>{{ page }} / {{ pages }}</span><button :disabled="page >= pages" @click="page++">下一页 →</button></nav>
+          <footer class="runner-data-source">数据来自 COROS · 更新于 {{ updatedDate }}</footer>
         </div>
 
         <aside ref="detailElement" class="runner-panel runner-detail" aria-label="单次跑步详情" aria-live="polite">
@@ -217,42 +240,41 @@ async function select(activity: Activity) {
               <div><dt>累计爬升</dt><dd>{{ selected.elevationGainMeters ?? '—' }}<small>m</small></dd></div>
               <div><dt>消耗</dt><dd>{{ selected.calories ?? '—' }}<small>kcal</small></dd></div>
             </dl>
-            <div class="runner-splits-heading"><h3>每公里分段</h3><span>配速 / 心率</span></div>
-            <p v-if="splitsNote" class="runner-footnote">{{ splitsNote }}</p>
-            <div v-if="selected.splits.length" class="runner-splits" tabindex="0" aria-label="每公里分段，内容可滚动">
-              <div v-for="split in selected.splits" :key="split.index" class="runner-split">
-                <span class="runner-split-index">{{ split.index }}<small v-if="split.distanceKm < 0.95">{{ split.distanceKm.toFixed(2) }}km</small></span>
-                <span class="runner-split-bar"><i :style="{ width: `${Math.min(100, Math.max(8, (2 - split.paceSeconds / maxPace) * 60))}%` }" /></span>
-                <b>{{ pace(split.paceSeconds) }}</b><span class="runner-split-hr">{{ split.heartRate ?? '—' }}</span>
-              </div>
-            </div>
-            <p v-else class="runner-footnote">这次跑步暂未提供每公里分段。</p>
-            <p class="runner-footnote">分段越快，色条越长。末段按实际距离计算。</p>
+            <RunningActivityDetail :activity="selected" />
           </template>
           <p v-else class="runner-empty">点击左侧记录，查看这次跑步。</p>
         </aside>
       </section>
 
-      <footer class="runner-bottom"><span>数据来自 COROS · 更新于 {{ updatedDate }}</span><span>持续记录，慢慢向前。</span></footer>
     </template>
 
-    <section class="runner-stories"><div class="runner-panel-heading"><h2>数字之外</h2><span>训练、比赛与沿途的感受</span></div><div class="runner-story-links"><a :href="withBase('/blog/running-note-1.html')"><span>2026.03</span><b>跑步阶段小记：南京北岸半马</b><i>↗</i></a><a :href="withBase('/blog/run.html')"><span>2026.02</span><b>我的跑步历程</b><i>↗</i></a></div></section>
+    <section class="runner-panel runner-stories">
+      <div class="runner-panel-heading"><h2>跑步相关博客</h2></div>
+      <div class="runner-story-links">
+        <a :href="withBase('/blog/running-note-1.html')">
+          <div class="runner-story-copy"><span>2026.03</span><b>跑步阶段小记：南京北岸半马</b></div><i aria-hidden="true">↗</i>
+        </a>
+        <a :href="withBase('/blog/run.html')">
+          <div class="runner-story-copy"><span>2026.02</span><b>我的跑步历程</b></div><i aria-hidden="true">↗</i>
+        </a>
+      </div>
+    </section>
   </main>
 </template>
 
 <style scoped>
-.runner { --run-accent: #337b95; --run-soft: #e9f2f5; --run-text: var(--vp-c-text-1); --run-muted: var(--vp-c-text-2); --run-border: var(--vp-c-divider); --run-surface: var(--vp-c-bg); --run-fill: var(--vp-c-bg-soft); max-width: 1160px; margin: 0 auto; padding: 60px 32px 72px; color: var(--run-text); font-family: var(--vp-font-family-base); }
+@font-face { font-family: "Maple Mono CN"; src: url('/fonts/maple-mono/MapleMonoCN-Regular.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "Maple Mono CN"; src: url('/fonts/maple-mono/MapleMonoCN-SemiBold.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
+.runner { --run-font-family: "Maple Mono", "Maple Mono CN", monospace; --run-accent: #337b95; --run-soft: #e9f2f5; --run-text: var(--vp-c-text-1); --run-muted: var(--vp-c-text-2); --run-border: var(--vp-c-divider); --run-surface: var(--vp-c-bg); --run-fill: var(--vp-c-bg-soft); max-width: 1160px; margin: 0 auto; padding: 60px 32px 72px; color: var(--run-text); font-family: var(--run-font-family); }
+.runner :deep(*) { font-family: var(--run-font-family); }
 [data-theme="dark"] .runner { --run-accent: #8cccd5; --run-soft: #253a42; }
 .runner *, .runner *::before, .runner *::after { box-sizing: border-box; }
-.runner button, .runner select { font: inherit; color: inherit; }
+.runner button { font: inherit; color: inherit; }
 .runner button { cursor: pointer; }
 .runner button:disabled { cursor: default; }
-.runner button:focus-visible, .runner a:focus-visible, .runner select:focus-visible, .runner-splits:focus-visible { outline: 2px solid var(--run-accent); outline-offset: 4px; }
+.runner button:focus-visible, .runner a:focus-visible, .runner-months:focus-visible { outline: 2px solid var(--run-accent); outline-offset: 4px; }
 .runner-heading { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-bottom: 38px; }
-.runner-kicker { display: flex; align-items: center; gap: 9px; margin: 0 0 22px; color: var(--run-muted); font-size: 11px; letter-spacing: .12em; }
-.runner-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--run-accent); }
-.runner h1 { margin: 0; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: clamp(32px, 4vw, 46px); font-weight: 650; letter-spacing: -.045em; line-height: 1.3; }
-.runner h1 span { color: var(--run-accent); }
+.runner h1 { margin: 0; font-size: clamp(32px, 4vw, 46px); font-weight: 650; letter-spacing: -.045em; line-height: 1.3; }
 .runner-intro { margin: 17px 0 0; font-size: 13px; color: var(--run-muted); }
 .runner-latest { min-width: 220px; border-left: 2px solid var(--run-accent); padding-left: 25px; }
 .runner-latest > span { font-size: 11px; color: var(--run-muted); }
@@ -260,12 +282,7 @@ async function select(activity: Activity) {
 .runner-latest p { margin: 5px 0; font-size: 40px; line-height: 1.4; letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
 .runner-latest p small { margin-left: 9px; font-size: 15px; letter-spacing: 0; color: var(--run-muted); }
 .runner-latest i { margin: 0 4px; font-style: normal; }
-.runner-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; border-top: 1px solid var(--run-border); }
-.runner-filters { display: flex; gap: 18px; }
-.runner-filters label { display: flex; align-items: center; gap: 8px; color: var(--run-muted); font-size: 11px; }
-.runner select { border: 1px solid var(--run-border); border-radius: 6px; background: var(--run-surface); padding: 7px 24px 7px 9px; font-size: 12px; }
-.runner-coverage { color: var(--run-muted); font-size: 10px; }
-.runner-stats { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1.1fr; padding: 26px 0 32px; border-bottom: 1px solid var(--run-border); }
+.runner-stats { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1.1fr; padding: 26px 0 32px; border-top: 1px solid var(--run-border); border-bottom: 1px solid var(--run-border); }
 .runner-stats > div { padding: 0 20px; border-left: 1px solid var(--run-border); }
 .runner-stats > div:first-child { padding-left: 0; border: 0; }
 .runner-stats > div > span { font-size: 11px; color: var(--run-muted); }
@@ -276,15 +293,22 @@ async function select(activity: Activity) {
 .runner-panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
 .runner h2 { border: 0; padding: 0; margin: 0; font-size: 15px; font-weight: 600; line-height: 1.5; }
 .runner-panel-heading > span { font-size: 10px; color: var(--run-muted); }
-.runner-months { display: grid; align-content: start; gap: 7px; min-height: 173px; max-height: 230px; overflow: auto; padding: 20px 0 12px; }
-.runner-month { display: flex; align-items: center; gap: 14px; width: 100%; padding: 7px 5px; border: 0; border-radius: 4px; background: transparent; text-align: left; }
+.runner-month-chart { --run-chart-height: 184px; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px; margin-top: 16px; }
+.runner-month-axis { position: relative; color: var(--run-muted); font-size: 10px; }
+.runner-month-unit { position: absolute; top: 0; right: 6px; }
+.runner-month-scale { position: relative; height: var(--run-chart-height); margin-top: 24px; }
+.runner-month-scale span { position: absolute; right: 6px; transform: translateY(-50%); font-variant-numeric: tabular-nums; }
+.runner-months { min-width: 0; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; scrollbar-color: var(--run-accent) var(--run-fill); }
+.runner-month-plot { display: flex; position: relative; width: max-content; min-width: 100%; padding-top: 24px; }
+.runner-month-grid { position: absolute; top: 24px; right: 0; left: 0; height: var(--run-chart-height); pointer-events: none; }
+.runner-month-grid i { position: absolute; right: 0; left: 0; border-top: 1px solid var(--run-border); }
+.runner-month { position: relative; display: flex; flex: 0 0 56px; flex-direction: column; align-items: center; width: 56px; padding: 0 6px; border: 0; border-radius: 4px; background: transparent; }
 .runner-month:hover, .runner-month.active { background: var(--run-fill); }
-.runner-month-name { font-size: 11px; white-space: nowrap; color: var(--run-muted); }
-.runner-bar-track { flex: 1; height: 13px; border-radius: 2px; background: var(--run-fill); overflow: hidden; }
-.runner-bar-track > span { display: block; height: 100%; background: var(--run-accent); opacity: .7; border-radius: 2px; }
-.runner-month.active .runner-bar-track > span { opacity: 1; }
-.runner-month-distance { min-width: 72px; text-align: right; font-size: 12px; font-variant-numeric: tabular-nums; }
-.runner-month-distance small { font-size: 9px; color: var(--run-muted); }
+.runner-month-name { height: 28px; line-height: 28px; font-size: 10px; white-space: nowrap; color: var(--run-muted); }
+.runner-month-track { display: flex; align-items: flex-end; justify-content: center; width: 100%; height: var(--run-chart-height); }
+.runner-month-column { position: relative; width: 24px; border-radius: 3px 3px 0 0; background: var(--run-accent); opacity: .75; }
+.runner-month.active .runner-month-column { opacity: 1; }
+.runner-month-distance { position: absolute; bottom: 100%; left: 50%; margin-bottom: 6px; transform: translateX(-50%); color: var(--run-text); font-size: 10px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .runner-footnote { margin: 14px 0 0; font-size: 10px; line-height: 1.7; color: var(--run-muted); }
 .runner-calendar-nav { display: flex; align-items: center; gap: 12px; font-size: 11px; }
 .runner-calendar-nav button { width: 24px; height: 26px; border: 0; border-radius: 4px; background: var(--run-fill); font-size: 20px; line-height: 1; }
@@ -329,29 +353,21 @@ async function select(activity: Activity) {
 .runner-detail-metrics dt { color: var(--run-muted); font-size: 10px; }
 .runner-detail-metrics dd { margin: 5px 0 0; font-size: 17px; font-variant-numeric: tabular-nums; }
 .runner-detail-metrics small { margin-left: 4px; font-size: 9px; color: var(--run-muted); }
-.runner-splits-heading { display: flex; justify-content: space-between; align-items: center; margin: 25px 0 12px; border-top: 1px solid var(--run-border); padding-top: 20px; }
-.runner h3 { font-size: 12px; font-weight: 500; margin: 0; }
-.runner-splits-heading > span { font-size: 9px; color: var(--run-muted); }
-.runner-splits { max-height: 290px; overflow: auto; padding-right: 5px; }
-.runner-split { display: flex; align-items: center; gap: 9px; min-height: 29px; font-size: 10px; }
-.runner-split-index { display: flex; align-items: center; gap: 4px; width: 20px; color: var(--run-muted); }
-.runner-split-index small { font-size: 8px; }
-.runner-split:has(.runner-split-index small) .runner-split-index { width: 57px; }
-.runner-split-bar { flex: 1; min-width: 0; }
-.runner-split-bar i { display: block; height: 10px; background: var(--run-accent); opacity: .7; border-radius: 2px; }
-.runner-split b { font-weight: 500; font-variant-numeric: tabular-nums; }
-.runner-split-hr { width: 23px; text-align: right; color: var(--run-muted); }
-.runner-bottom { display: flex; justify-content: space-between; gap: 12px; padding: 28px 0 34px; font-size: 10px; color: var(--run-muted); }
-.runner-stories { border-top: 1px solid var(--run-border); padding-top: 25px; }
-.runner-story-links { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 15px; }
-.runner-story-links a { display: flex; align-items: center; gap: 12px; color: var(--run-text); padding: 12px 0; text-decoration: none; }
-.runner-story-links span { font-size: 10px; color: var(--run-muted); }
-.runner-story-links b { flex: 1; font-size: 11px; font-weight: 400; }
-.runner-story-links i { font-style: normal; color: var(--run-accent); }
+.runner-data-source { padding-top: 16px; font-size: 10px; line-height: 1.8; color: var(--run-muted); }
+.runner-stories { margin-top: 32px; }
+.runner-stories > .runner-panel-heading { flex-wrap: wrap; gap: 6px 14px; }
+.runner-story-links { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+.runner-story-links a { display: flex; align-items: center; gap: 16px; min-height: 104px; padding: 18px; border: 1px solid var(--run-border); border-radius: 8px; background: var(--run-fill); color: var(--run-text); text-decoration: none; }
+.runner-story-links a:hover { border-color: var(--run-accent); background: var(--run-soft); }
+.runner-story-copy { flex: 1; min-width: 0; }
+.runner-story-links span { display: block; font-size: 11px; color: var(--run-muted); }
+.runner-story-links b { display: block; margin-top: 8px; font-size: 16px; font-weight: 600; line-height: 1.6; }
+.runner-story-links i { flex-shrink: 0; font-size: 22px; font-style: normal; color: var(--run-accent); }
 .runner-state, .runner-empty { padding: 48px 16px; font-size: 13px; line-height: 1.8; color: var(--run-muted); text-align: center; }
 .runner-button { padding: 7px 15px; border: 1px solid var(--run-border); background: var(--run-surface); border-radius: 5px; }
-@media (max-width: 960px) { .runner { padding: 40px 24px 50px; } .runner-coverage { font-size: 9px; } .runner-panel { padding: 18px; } .runner-log { gap: 18px; } .runner-record { gap: 9px; } .runner-record-pace { display: none; } }
-@media (max-width: 760px) { .runner { padding: 30px 20px 45px; } .runner-heading { align-items: start; padding-bottom: 27px; } .runner-latest { min-width: 145px; padding-left: 15px; } .runner-latest p { font-size: 32px; } .runner-latest > span:last-child { display: none; } .runner-intro { max-width: 240px; line-height: 1.8; } .runner-toolbar { align-items: start; flex-direction: column; gap: 12px; } .runner-stats { grid-template-columns: repeat(2, 1fr); gap: 25px 0; } .runner-stats > div:nth-child(3) { padding-left: 0; border: 0; } .runner-stats p { font-size: 30px; } .runner-overview { grid-template-columns: 1fr; gap: 16px; margin-bottom: 30px; } .runner-months { min-height: auto; max-height: 190px; } .runner-days button { height: 32px; } .runner-log { grid-template-columns: 1fr; } .runner-record-pace { display: block; } .runner-detail { position: static; margin-top: 10px; } .runner-detail-metrics { grid-template-columns: repeat(3, 1fr); } .runner-detail-distance { font-size: 42px; } .runner-splits { max-height: 310px; } .runner-story-links { grid-template-columns: 1fr; gap: 0; } .runner-bottom { flex-direction: column; font-size: 9px; } }
-@media (max-width: 430px) { .runner-heading { flex-direction: column; gap: 22px; } .runner h1 { font-size: 36px; } .runner-latest { display: flex; align-items: baseline; gap: 14px; border-left: 0; border-bottom: 1px solid var(--run-border); padding: 0 0 5px; width: 100%; } .runner-latest p { margin: 0 0 0 auto; font-size: 25px; } .runner-kicker { margin-bottom: 16px; } .runner-intro { max-width: none; font-size: 12px; } .runner-filters { flex-wrap: wrap; gap: 12px; } .runner-calendar-nav { gap: 8px; } .runner-record-distance { min-width: 59px; font-size: 16px; } .runner-record-pace { width: 48px; font-size: 11px; } .runner-record-arrow { display: none; } }
+@media (max-width: 960px) { .runner { padding: 40px 24px 50px; } .runner-panel { padding: 18px; } .runner-log { gap: 18px; } .runner-record { gap: 9px; } .runner-record-pace { display: none; } }
+@media (max-width: 760px) { .runner { padding: 30px 20px 45px; } .runner-heading { align-items: start; padding-bottom: 27px; } .runner-latest { min-width: 145px; padding-left: 15px; } .runner-latest p { font-size: 32px; } .runner-latest > span:last-child { display: none; } .runner-intro { max-width: 240px; line-height: 1.8; } .runner-stats { grid-template-columns: repeat(2, 1fr); gap: 25px 0; } .runner-stats > div:nth-child(3) { padding-left: 0; border: 0; } .runner-stats p { font-size: 30px; } .runner-overview { grid-template-columns: 1fr; gap: 16px; margin-bottom: 30px; } .runner-days button { height: 32px; } .runner-log { grid-template-columns: 1fr; } .runner-record-pace { display: block; } .runner-detail { position: static; margin-top: 10px; } .runner-detail-metrics { grid-template-columns: repeat(3, 1fr); } .runner-detail-distance { font-size: 42px; } .runner-story-links { grid-template-columns: 1fr; gap: 12px; } }
+@media (max-width: 640px) { .runner-heading { flex-direction: column; gap: 22px; } .runner-latest { display: flex; align-items: baseline; gap: 14px; border-left: 0; border-bottom: 1px solid var(--run-border); padding: 0 0 5px; width: 100%; } .runner-latest p { margin: 0 0 0 auto; font-size: 25px; } .runner-intro { max-width: none; } }
+@media (max-width: 430px) { .runner h1 { font-size: 36px; } .runner-intro { font-size: 12px; } .runner-calendar-nav { gap: 8px; } .runner-record-distance { min-width: 59px; font-size: 16px; } .runner-record-pace { width: 48px; font-size: 11px; } .runner-record-arrow { display: none; } }
 @media (prefers-reduced-motion: reduce) { .runner-record { transition: none; } }
 </style>

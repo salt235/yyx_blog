@@ -80,6 +80,13 @@ jobs:
           if [ -n "$SYNC_TO" ]; then args+=(--to "$SYNC_TO"); fi
           pnpm running:sync "${args[@]}"
 
+      - name: Backfill up to 20 running details
+        id: details
+        if: github.event_name != 'push'
+        # 历史详情暂时不可用时，仍发布已同步的摘要及本批完成的详情。
+        continue-on-error: true
+        run: pnpm running:sync-details --limit 20 --issuer https://mcpcn.coros.com
+
       # 即使数据请求失败，也要保存可能已轮换的 refresh token。
       # 只有同步成功才提交活动 JSON，防止用半份数据覆盖线上页面。
       - name: Persist refreshed authorization and data
@@ -95,6 +102,12 @@ jobs:
           git add .github/coros-auth.enc
           if [ "$SYNC_OUTCOME" = 'success' ]; then
             git add docs/.vuepress/public/running-data/activities.json
+            if [ -d docs/.vuepress/public/running-data/details ]; then
+              git add docs/.vuepress/public/running-data/details
+            fi
+          fi
+          if [ -f .github/coros-fit-state.json ]; then
+            git add .github/coros-fit-state.json
           fi
           if ! git diff --cached --quiet; then
             git commit -m 'chore: sync running data'
