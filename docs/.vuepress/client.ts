@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+import { defineAsyncComponent } from 'vue'
 // import RepoCard from 'vuepress-theme-plume/features/RepoCard.vue'
 // import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 // import NpmBadgeGroup from 'vuepress-theme-plume/features/NpmBadgeGroup.vue'
@@ -12,6 +13,7 @@ import HomeCover from './theme/components/HomeCover.vue'
 export default defineClientConfig({
   enhance({ app }) {
     app.component('HomeCover', HomeCover)
+    app.component('RunningDashboard', defineAsyncComponent(() => import('./theme/components/running/RunningDashboard.vue')))
     // built-in components
     // app.component('RepoCard', RepoCard)
     // app.component('NpmBadge', NpmBadge)

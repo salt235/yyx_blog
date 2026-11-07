@@ -33,6 +33,9 @@ importers:
       '@vuepress/shiki-twoslash':
         specifier: 2.0.0-rc.121
         version: 2.0.0-rc.121(typescript@5.9.3)(vue@3.5.26(typescript@5.9.3))(vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.3)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.26(typescript@5.9.3)))
+      coros-mcp:
+        specifier: 0.1.1
+        version: 0.1.1
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
@@ -1689,6 +1692,11 @@ packages:
   copy-anything@4.0.5:
     resolution: {integrity: sha512-7Vv6asjS4gMOuILabD3l739tsaxFQmC+a7pLZm02zyvs8p977bL3zEgq3yDk5rn9B0PbYgIv++jmHcuUab4RhA==}
     engines: {node: '>=18'}
+
+  coros-mcp@0.1.1:
+    resolution: {integrity: sha512-vvw/8riQ8DcHpf8BpVHH1LRULRBfs+F29Pp4cYwwtmDthF9PEoJciG0mgMD/moCCWUzUCnK1AyjKzGYQ07LwKA==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   corser@2.0.1:
     resolution: {integrity: sha512-utCYNzRSQIZNPIcGZdQc92UVJYAhtGAteCFg0yRaFm8f0P+CPtyGyHXJcGXnffjCybUCEx3FQ2G7U3/o9eIkVQ==}
@@ -4939,6 +4947,8 @@ snapshots:
   copy-anything@4.0.5:
     dependencies:
       is-what: 5.5.0
+
+  coros-mcp@0.1.1: {}
 
   corser@2.0.1: {}
 

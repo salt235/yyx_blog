@@ -7,6 +7,9 @@
   "author": "salt235 <734489881@qq.com>",
   "license": "MIT",
   "scripts": {
+    "running:login": "node scripts/running/sync.mjs login",
+    "running:sync": "node scripts/running/sync.mjs",
+    "running:test": "node --test scripts/running/*.test.mjs",
     "docs:build": "vuepress build docs --clean-cache --clean-temp",
     "docs:dev": "vuepress dev docs",
     "docs:dev-clean": "vuepress dev docs --clean-cache --clean-temp",
@@ -16,6 +19,7 @@
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.26",
     "@vuepress/shiki-twoslash": "2.0.0-rc.121",
+    "coros-mcp": "0.1.1",
     "http-server": "^14.1.1",
     "typescript": "^5.9.3",
     "vue": "^3.5.26",

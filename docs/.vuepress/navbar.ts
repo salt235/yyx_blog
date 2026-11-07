@@ -9,6 +9,7 @@ import { defineNavbarConfig } from 'vuepress-theme-plume'
 export default defineNavbarConfig([
   { text: '首页', link: '/' , icon: 'material-symbols:home-rounded'},
   { text: '博客', link: '/blog/' , icon: 'material-symbols:bookmark-manager-rounded'},
+  { text: '跑步', link: '/running/' , icon: 'material-symbols:directions-run-rounded'},
   { text: '笔记', link: '/notes/' , icon: 'material-symbols:book-4-rounded'},
   { text: '友链', link: '/friends/' , icon: 'fa-solid:user-friends'}
 ])

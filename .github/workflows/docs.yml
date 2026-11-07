@@ -1,56 +1,123 @@
 name: docs
 
 on:
-  # 每当 push 到 main 分支时触发部署
   push:
     branches: [main]
-  # 手动触发部署
+  # UTC 19:00 = 次日北京时间 03:00。
+  schedule:
+    - cron: '0 19 * * *'
   workflow_dispatch:
+    inputs:
+      from:
+        description: '可选：补拉开始日期（YYYY-MM-DD），留空为增量同步'
+        type: string
+        default: ''
+      to:
+        description: '可选：补拉结束日期（YYYY-MM-DD），留空为今天'
+        type: string
+        default: ''
+
+permissions:
+  contents: write
+
+# 授权刷新和发布串行执行，避免两个任务互相覆盖 refresh token。
+concurrency:
+  group: blog-publish-main
+  cancel-in-progress: false
 
 jobs:
   docs:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
     steps:
       - uses: actions/checkout@v4
         with:
-          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+          ref: main
           fetch-depth: 0
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          # 选择要使用的 pnpm 版本
           version: 10.26.1
-          # 使用 pnpm 安装依赖
-          run_install: true
+          run_install: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # 选择要使用的 node 版本
           node-version: 22
-          # 缓存 pnpm 依赖
           cache: pnpm
 
-      # 运行构建脚本
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Test running data handling
+        run: pnpm running:test
+
+      - name: Restore COROS authorization
+        id: restore
+        if: github.event_name != 'push'
+        env:
+          COROS_STATE_KEY: ${{ secrets.COROS_STATE_KEY }}
+        run: |
+          if [ -z "$COROS_STATE_KEY" ]; then
+            echo '::error::请先在仓库 Actions Secrets 中配置 COROS_STATE_KEY。'
+            exit 1
+          fi
+          node scripts/running/auth-state.mjs unpack
+
+      - name: Sync running activities
+        id: sync
+        if: github.event_name != 'push'
+        env:
+          SYNC_FROM: ${{ inputs.from }}
+          SYNC_TO: ${{ inputs.to }}
+        shell: bash
+        run: |
+          args=(--issuer https://mcpcn.coros.com)
+          if [ -n "$SYNC_FROM" ]; then args+=(--from "$SYNC_FROM"); fi
+          if [ -n "$SYNC_TO" ]; then args+=(--to "$SYNC_TO"); fi
+          pnpm running:sync "${args[@]}"
+
+      # 即使数据请求失败，也要保存可能已轮换的 refresh token。
+      # 只有同步成功才提交活动 JSON，防止用半份数据覆盖线上页面。
+      - name: Persist refreshed authorization and data
+        if: always() && steps.restore.outcome == 'success'
+        env:
+          COROS_STATE_KEY: ${{ secrets.COROS_STATE_KEY }}
+          COROS_ISSUER: https://mcpcn.coros.com
+          SYNC_OUTCOME: ${{ steps.sync.outcome }}
+        run: |
+          node scripts/running/auth-state.mjs pack
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/coros-auth.enc
+          if [ "$SYNC_OUTCOME" = 'success' ]; then
+            git add docs/.vuepress/public/running-data/activities.json
+          fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: sync running data'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
       - name: Build VuePress site
         run: pnpm docs:build
 
-      # 添加 CNAME 记录
-      # Add CNAME record
       - name: Add CNAME record
-        run: echo ${{ secrets.TARGET_DOMAIN }} > docs/.vuepress/dist/CNAME
+        env:
+          TARGET_DOMAIN: ${{ secrets.TARGET_DOMAIN }}
+        run: |
+          if [ -n "$TARGET_DOMAIN" ]; then
+            printf '%s\n' "$TARGET_DOMAIN" > docs/.vuepress/dist/CNAME
+          fi
 
-      # 查看 workflow 的文档来获取更多信息
-      # @see https://github.com/crazy-max/ghaction-github-pages
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4
         with:
-          # 部署到 gh-pages 分支
           target_branch: gh-pages
-          # 部署目录为 VuePress 的默认输出目录
           build_dir: docs/.vuepress/dist
+          keep_history: true
         env:
-          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

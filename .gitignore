@@ -6,3 +6,6 @@ docs/.vuepress/dist
 
 .DS_Store
 *.log
+
+# COROS OAuth state stays on this machine, outside public site assets.
+.local/
